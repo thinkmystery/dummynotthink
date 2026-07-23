@@ -1,0 +1,16 @@
+---
+const { includes_items, file_spec, value_contrast, sanity_rule, guarantee_text } = Astro.props
+---
+<section class="section split">
+  <div>
+    <div class="value-contrast"><p>{value_contrast}</p></div>
+    <h2>What Is Included</h2>
+    <ul class="checklist">{includes_items.map(item => <li>{item}</li>)}</ul>
+    <p class="file-spec">📄 {file_spec}</p>
+    <div class="guarantee-box"><p><strong>30-day money-back guarantee.</strong> {guarantee_text}</p></div>
+  </div>
+  <div class="note-card">
+    <h3>Parent sanity rule</h3>
+    <p>{sanity_rule}</p>
+  </div>
+</section>

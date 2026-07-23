@@ -1,0 +1,30 @@
+---
+// src/components/Setup.astro
+const { setup_steps, prize_ideas, setup_tip } = Astro.props
+---
+
+<section class="section split">
+  <div>
+    <h2>Parent Setup Guide</h2>
+    <p class="section-sub">5 steps · 5 minutes total</p>
+    <ol class="steps">
+      {setup_steps.map(step => (
+        <li>
+          <strong>{step.text}</strong>
+          <span class="step-time">{step.time}</span>
+        </li>
+      ))}
+    </ol>
+    {setup_tip && (
+      <div class="setup-tip">
+        <p>💡 <strong>Pro tip:</strong> {setup_tip}</p>
+      </div>
+    )}
+  </div>
+  <div>
+    <h2>Best Prize Ideas</h2>
+    <ul class="checklist">
+      {prize_ideas.map(idea => <li>{idea}</li>)}
+    </ul>
+  </div>
+</section>

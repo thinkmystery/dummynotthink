@@ -1,0 +1,60 @@
+---
+// src/components/Hero.astro
+const {
+  h1, h2_hook, hero_strap, eyebrow,
+  product_price, etsy_url, cta_label, urgency_line,
+  setup_time, play_time, group_size, location,
+  clue_1_text, version, version_date,
+} = Astro.props
+---
+
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{h1}</h1>
+    <p class="hero-hook">{h2_hook}</p>
+    <p class="hero-text">{hero_strap}</p>
+
+    <div class="badges" aria-label="Game highlights">
+      <span>⏱️ {setup_time} min setup</span>
+      <span>📖 {location === 'indoor' ? 'Indoor play' : 'Outdoor play'}</span>
+      <span>👥 {group_size} kids</span>
+      <span>🎮 {play_time} min</span>
+    </div>
+
+    <div class="hero-actions">
+      <a class="button primary" href={etsy_url}>{cta_label} — ${product_price}</a>
+      <a class="button secondary" href="#sample-clues">See sample clues ↓</a>
+    </div>
+
+    <p class="cta-guarantee">🛡️ 30-day money-back guarantee — if it doesn't work, we'll refund you in full</p>
+    <p class="urgency-line">{urgency_line}</p>
+
+    <div class="how-strip">
+      <div class="how-step"><span class="how-n">1</span><div><strong>Buy securely</strong><span>~30 sec</span></div></div>
+      <div class="how-step"><span class="how-n">2</span><div><strong>Check email</strong><span>Instant</span></div></div>
+      <div class="how-step"><span class="how-n">3</span><div><strong>Download & print</strong><span>~2 min</span></div></div>
+    </div>
+  </div>
+
+  <aside class="hero-card" aria-label="Product preview">
+    <div class="mock-preview">
+      <div class="mock-top">Hunt Preview</div>
+      <div class="mock-paper">
+        <p>Clue #1</p>
+        <strong>"{clue_1_text.slice(0, 70)}..."</strong>
+      </div>
+      <div class="mock-paper small">
+        <p>Version {version} · {version_date}</p>
+        <strong>Official certificate included</strong>
+      </div>
+    </div>
+    <div class="card-price-row">
+      <div>
+        <div class="card-price">${product_price}</div>
+        <div class="card-price-ctx">Party planners charge $150+ for this</div>
+      </div>
+      <a class="button primary" href={etsy_url}>{cta_label} →</a>
+    </div>
+  </aside>
+</section>

@@ -1,0 +1,341 @@
+---
+// src/pages/scavenger-hunts/index.astro
+// Silo landing page for all scavenger hunts
+
+const siteUrl = 'https://thinkmystery.com'
+const canonicalUrl = `${siteUrl}/scavenger-hunts/`
+
+const seo_title = 'Printable Scavenger Hunts for Kids — Indoor & Outdoor | ThinkMystery'
+const meta_description = 'Printable scavenger hunts for kids aged 4–9. Pirate, dinosaur, Halloween, Christmas and more. 5-minute setup, instant download. Tested at real parties.'
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: seo_title,
+    description: meta_description,
+    url: canonicalUrl,
+    isPartOf: { '@type': 'WebSite', name: 'ThinkMystery', url: siteUrl },
+  },
+]
+
+const themes = [
+  {
+    label: 'Pirate Scavenger Hunts',
+    url: '/scavenger-hunts/pirate/',
+    emoji: '🏴‍☠️',
+    desc: 'Ages 5–8. Birthday and rainy day versions. The most-tested hunts in the range — 14 real parties before launch.',
+    ages: 'Ages 5–8',
+    occasions: 'Birthday · Rainy day',
+    count: '5 hunts',
+    featured: true,
+    bg: '#FEF0E8',
+    border: '#F5C4A8',
+  },
+  {
+    label: 'Dinosaur Scavenger Hunts',
+    url: '/scavenger-hunts/dinosaur/',
+    emoji: '🦕',
+    desc: 'Ages 5–7. From super-simple clues for non-readers to palaeontology language for 7-year-old experts.',
+    ages: 'Ages 5–7',
+    occasions: 'Birthday · Rainy day',
+    count: '4 hunts',
+    featured: false,
+    bg: '#EAF5EE',
+    border: '#B8D9C0',
+  },
+  {
+    label: 'Halloween Scavenger Hunts',
+    url: '/scavenger-hunts/halloween-8-year-old-birthday/',
+    emoji: '🎃',
+    desc: 'Spooky atmospheric clues for ages 7–9. Properly challenging — the kind that make a group go quiet and think.',
+    ages: 'Ages 7–9',
+    occasions: 'Birthday · Halloween party',
+    count: '1 hunt',
+    featured: false,
+    bg: '#F4EDE0',
+    border: '#DDD3C0',
+  },
+  {
+    label: 'Unicorn Scavenger Hunts',
+    url: '/scavenger-hunts/unicorn-7-year-old-birthday/',
+    emoji: '🦄',
+    desc: 'Magical clues with a deduction step. Perfect for 7-year-olds who want more than a direct "go to the fridge."',
+    ages: 'Ages 6–8',
+    occasions: 'Birthday · Sleepover',
+    count: '1 hunt',
+    featured: false,
+    bg: '#EAF1FB',
+    border: '#C0CEED',
+  },
+  {
+    label: 'Christmas Scavenger Hunts',
+    url: '/scavenger-hunts/christmas-6-year-old-rainy-day/',
+    emoji: '🎄',
+    desc: 'Festive indoor hunts for the Christmas holidays. Screen-free activity for rainy Boxing Days and long holiday afternoons.',
+    ages: 'Ages 5–7',
+    occasions: 'Christmas holidays',
+    count: '1 hunt',
+    featured: false,
+    bg: '#EAF5EE',
+    border: '#B8D9C0',
+  },
+]
+
+const stats = [
+  { value: '60+', label: 'real parties tested' },
+  { value: '4–9', label: 'age range covered' },
+  { value: '5 min', label: 'setup time' },
+  { value: '30-day', label: 'money-back guarantee' },
+]
+
+const faqs = [
+  {
+    q: 'What age range do these scavenger hunts cover?',
+    a: 'Ages 4–9. Each hunt is calibrated for a specific age — not just labelled with an age range. The age-5 versions use 11 words per clue on average; the age-8 versions use atmospheric metaphorical language with a genuine deduction step. The difference between versions is real, not cosmetic.',
+  },
+  {
+    q: 'Do these work indoors?',
+    a: 'Yes — all hunts are designed for indoor use. Every hiding spot (fridge, sofa, TV area, shoe rack) exists in any standard home. No garden needed, no unusual rooms required.',
+  },
+  {
+    q: 'How long does setup take?',
+    a: 'Five minutes. Print the clue cards, cut them out (optional — folded works fine), place each clue at its hiding spot using the included location guide, put the treasure at the final spot. The location guide is in every PDF.',
+  },
+  {
+    q: 'Can a child read the clues independently?',
+    a: 'It depends on the age version. Ages 5–6 are designed for one adult read-through per clue. Ages 7–8 are designed for fully independent child reading. The reading level is specified on every product page.',
+  },
+  {
+    q: 'Can I use the same hunt more than once?',
+    a: 'Yes — reorder the clues and the route changes completely. The rainy day versions are specifically designed for repeated use. Many families use the same hunt 4–5 times before moving to the next theme.',
+  },
+]
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{seo_title}</title>
+  <meta name="description" content={meta_description} />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content={seo_title} />
+  <meta property="og:description" content={meta_description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  {structuredData.map(sd => (
+    <script type="application/ld+json" set:html={JSON.stringify(sd)} />
+  ))}
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Nunito Sans', sans-serif; background: #FFF9F2; color: #2C1F0F; }
+
+    /* NAV */
+    .site-nav { background: #2C1F0F; padding: 0 22px; height: 52px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.1rem; color: #F5C842; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.8rem; color: rgba(255,255,255,0.75); text-decoration: none; }
+    .nav-links a:hover { color: #fff; }
+
+    .page-wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px 60px; }
+
+    /* BREADCRUMBS */
+    .breadcrumbs { display: flex; gap: 0.4rem; align-items: center; padding: 0.75rem 0; font-size: 0.78rem; color: #9E8060; font-family: 'Nunito', sans-serif; font-weight: 700; }
+    .breadcrumbs a { color: #9E8060; text-decoration: underline; text-underline-offset: 2px; }
+
+    /* HERO */
+    .silo-hero { padding: 2.5rem 0 2rem; border-bottom: 1.5px solid #DDD3C0; }
+    .silo-hero h1 { font-family: 'Nunito', sans-serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 1rem; }
+    .silo-hero-intro { font-size: 1.05rem; line-height: 1.75; color: #5C3D22; max-width: 680px; margin-bottom: 1.5rem; }
+    .trust-strip { display: flex; gap: 2rem; flex-wrap: wrap; padding: 1rem 1.25rem; background: #F4EDE0; border-radius: 14px; border: 1.5px solid #DDD3C0; width: fit-content; margin-bottom: 1.5rem; }
+    .trust-stat strong { display: block; font-family: 'Nunito', sans-serif; font-size: 1.2rem; font-weight: 900; color: #E8703A; line-height: 1; }
+    .trust-stat span { font-family: 'Nunito', sans-serif; font-size: 0.72rem; font-weight: 700; color: #6B4E2E; text-transform: uppercase; letter-spacing: 0.3px; }
+
+    /* SECTION */
+    .section { padding: 2.5rem 0; border-bottom: 1.5px solid #DDD3C0; }
+    .section:last-child { border-bottom: none; }
+    .section h2 { font-family: 'Nunito', sans-serif; font-size: clamp(1.2rem, 2.5vw, 1.7rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+    .section-sub { font-size: 0.9rem; color: #6B4E2E; margin-top: -0.75rem; margin-bottom: 1.25rem; }
+
+    /* THEME GRID */
+    .theme-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .theme-card { border-radius: 20px; border: 1.5px solid #DDD3C0; padding: 1.4rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.5rem; transition: transform 0.15s, box-shadow 0.15s; position: relative; background: #fff; }
+    .theme-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(92,61,34,0.1); }
+    .theme-card.featured { border-width: 2px; }
+    .featured-badge { position: absolute; top: -12px; left: 1.25rem; background: #E8703A; color: #fff; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.68rem; padding: 3px 12px; border-radius: 999px; }
+    .theme-emoji { font-size: 2rem; margin-bottom: 0.25rem; }
+    .theme-card h3 { font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 900; color: #2C1F0F; }
+    .theme-card p { font-size: 0.855rem; color: #6B4E2E; line-height: 1.6; flex: 1; }
+    .theme-meta { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .theme-meta span { font-family: 'Nunito', sans-serif; font-size: 0.7rem; font-weight: 700; color: #6B4E2E; background: #F4EDE0; border-radius: 999px; padding: 2px 9px; }
+    .theme-cta { font-family: 'Nunito', sans-serif; font-size: 0.82rem; font-weight: 800; color: #E8703A; margin-top: 0.25rem; }
+
+    /* HOW IT WORKS */
+    .how-grid { display: flex; flex-direction: column; gap: 0; }
+    .how-item { display: flex; gap: 1.25rem; padding: 1.1rem 0; border-bottom: 1.5px solid #DDD3C0; align-items: flex-start; }
+    .how-item:last-child { border-bottom: none; }
+    .how-num { width: 34px; height: 34px; background: #E8703A; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.9rem; flex-shrink: 0; }
+    .how-item h3 { font-family: 'Nunito', sans-serif; font-size: 0.97rem; font-weight: 800; color: #2C1F0F; margin-bottom: 0.25rem; }
+    .how-item p { font-size: 0.875rem; color: #6B4E2E; line-height: 1.65; }
+
+    /* WHY */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .why-card { background: #F4EDE0; border-radius: 16px; padding: 1.25rem; }
+    .why-card h3 { font-family: 'Nunito', sans-serif; font-size: 0.95rem; font-weight: 800; color: #2C1F0F; margin-bottom: 0.5rem; }
+    .why-card p { font-size: 0.875rem; color: #5C3D22; line-height: 1.65; }
+
+    /* FAQ */
+    .faq-list { max-width: 760px; display: flex; flex-direction: column; }
+    details { border-bottom: 1.5px solid #DDD3C0; }
+    details:first-child { border-top: 1.5px solid #DDD3C0; }
+    summary { padding: 1rem 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem; color: #2C1F0F; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    summary::after { content: '+'; font-size: 1.1rem; color: #E8703A; font-weight: 900; }
+    details[open] summary::after { content: '−'; }
+    details p { font-size: 0.9rem; color: #5C3D22; line-height: 1.75; padding-bottom: 1rem; max-width: 680px; }
+
+    /* FOOTER */
+    .site-footer { background: #2C1F0F; padding: 2rem 22px; text-align: center; }
+    .footer-brand { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1rem; color: #F5C842; margin-bottom: 0.35rem; }
+    .footer-tagline { font-size: 0.78rem; color: rgba(255,255,255,0.5); font-family: 'Nunito', sans-serif; }
+
+    @media (max-width: 900px) {
+      .theme-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .theme-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .trust-strip { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="/" class="nav-brand">ThinkMystery</a>
+  <div class="nav-links">
+    <a href="/scavenger-hunts/">Scavenger Hunts</a>
+    <a href="/treasure-hunts/">Treasure Hunts</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span>›</span>
+    <span>Scavenger Hunts</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="silo-hero">
+    <h1>Printable Scavenger Hunts for Kids</h1>
+    <p class="silo-hero-intro">Every hunt in the ThinkMystery range is tested at real birthday parties before it goes on sale. Not designed in a spreadsheet — tested in living rooms, with actual children, until every clue worked. Five-minute setup. Instant download. 30-day guarantee.</p>
+    <div class="trust-strip">
+      {stats.map(stat => (
+        <div class="trust-stat">
+          <strong>{stat.value}</strong>
+          <span>{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- THEMES -->
+  <section class="section">
+    <h2>Browse by theme</h2>
+    <p class="section-sub">Each theme has multiple age variants — find the right one for your child.</p>
+    <div class="theme-grid">
+      {themes.map(theme => (
+        <a href={theme.url} class={`theme-card${theme.featured ? ' featured' : ''}`} style={`background: ${theme.bg}; border-color: ${theme.border};`}>
+          {theme.featured && <div class="featured-badge">Most popular</div>}
+          <div class="theme-emoji">{theme.emoji}</div>
+          <h3>{theme.label}</h3>
+          <p>{theme.desc}</p>
+          <div class="theme-meta">
+            <span>{theme.ages}</span>
+            <span>{theme.occasions}</span>
+            <span>{theme.count}</span>
+          </div>
+          <span class="theme-cta">Browse this theme →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <h2>How it works</h2>
+    <div class="how-grid">
+      {[
+        { title: 'Download instantly', body: 'Pay once, download immediately. A high-res PDF arrives in your inbox and is saved to your account. 300 DPI, US Letter and A4 both included.' },
+        { title: 'Print at home', body: 'Any home printer works. Standard paper is fine — you don\'t need photo paper or a colour laser. Most parents print the night before the party.' },
+        { title: 'Set up in 5 minutes', body: 'Cut out the clue cards (or fold them), place each one at its hiding spot using the included location guide, put the treasure at the final location.' },
+        { title: 'Read Clue 1 aloud — then step back', body: 'That\'s your job done. The kids run the rest themselves. Parents who buy this for the first time always report the same thing: "I literally just watched."' },
+        { title: '30-day guarantee', body: 'If the hunt doesn\'t work at your party for any reason — wrong difficulty, missing files, anything — email us within 30 days for a full refund. No questions, no hoops.' },
+      ].map((step, i) => (
+        <div class="how-item">
+          <div class="how-num">{i + 1}</div>
+          <div>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- WHY THINKMYSTERY -->
+  <section class="section">
+    <h2>Why ThinkMystery scavenger hunts are different</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>Tested at real parties, not designed in a spreadsheet</h3>
+        <p>Every hunt is tested at multiple real birthday parties before going on sale. We track which clues caused stalling, which hiding spots didn't exist in every home, and which vocabulary tripped up early readers. The version number on each product tells you exactly how many rounds of testing it's been through.</p>
+      </div>
+      <div class="why-card">
+        <h3>Calibrated for a specific age — not just labelled with a range</h3>
+        <p>The age-5 pirate hunt uses an average of 11 words per clue. The age-8 version uses atmospheric metaphorical language with a multi-step inference. These aren't the same product with a different label — they're genuinely different calibrations for genuinely different cognitive stages.</p>
+      </div>
+      <div class="why-card">
+        <h3>Every hiding spot exists in every home</h3>
+        <p>Fridge, sofa, TV area, shoe rack, bathroom. We tested every hiding spot across 14+ different homes before publishing. No "but we don't have that." No parent having to improvise a replacement spot mid-party while 8 children are waiting.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      {faqs.map((faq, i) => (
+        <details open={i === 0}>
+          <summary>{faq.q}</summary>
+          <p>{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- CROSS-LINK -->
+  <section class="section">
+    <h2>Also available: Pirate Treasure Hunts</h2>
+    <p style="font-size:0.97rem;color:#5C3D22;line-height:1.75;max-width:680px;margin-bottom:1.25rem;">If you want more narrative and a real treasure map the birthday child carries throughout the adventure, explore the treasure hunt range. Same 5-minute setup, same guarantee — but with a physical map prop and a more dramatic finale.</p>
+    <a href="/treasure-hunts/" style="display:inline-flex;align-items:center;gap:0.5rem;background:#2C1F0F;color:#F5C842;font-family:'Nunito',sans-serif;font-weight:900;font-size:0.9rem;padding:12px 24px;border-radius:999px;text-decoration:none;">Explore treasure hunts 🗺️</a>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <p class="footer-brand">ThinkMystery</p>
+  <p class="footer-tagline">The only mystery games tested with real kids before we sell them.</p>
+</footer>
+
+</body>
+</html>

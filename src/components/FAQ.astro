@@ -1,0 +1,80 @@
+---
+// src/components/FAQ.astro
+const {
+  age_value, occasion, location,
+  faq_reading_answer, faq_duration_answer, faq_groups_answer,
+  faq_location_answer, faq_age_upper_answer,
+  faq_prize_answer, faq_classroom_answer, faq_reuse_answer,
+} = Astro.props
+
+const occasionLabel = occasion.replace('-', ' ')
+const locationLabel = location === 'both' ? 'indoors or outdoors'
+                    : location === 'indoor' ? 'indoors' : 'outdoors'
+---
+
+<section class="section faq">
+  <h2>FAQs</h2>
+
+  <details open>
+    <summary>How do I get the file after buying?</summary>
+    <p>After payment you'll receive an email from Etsy with a download link — usually within 60 seconds. Click the link, download the PDF, and print. If you can't find the email, check spam or go to Purchases in your Etsy account. The link never expires.</p>
+  </details>
+
+  <details>
+    <summary>What paper and printer do I need?</summary>
+    <p>Any home printer — inkjet or laser. Standard 80gsm paper is fine. For sturdier clue cards, use light card stock. The PDF is 300 DPI and includes both US Letter and A4 sizes.</p>
+  </details>
+
+  <details>
+    <summary>Can a {age_value}-year-old read the clues alone?</summary>
+    <p>{faq_reading_answer}</p>
+  </details>
+
+  <details>
+    <summary>How long should a {occasionLabel} scavenger hunt last?</summary>
+    <p>{faq_duration_answer}</p>
+  </details>
+
+  <details>
+    <summary>Does this work for a group of kids?</summary>
+    <p>{faq_groups_answer}</p>
+  </details>
+
+  <details>
+    <summary>Can this be used {locationLabel}?</summary>
+    <p>{faq_location_answer}</p>
+  </details>
+
+  {faq_prize_answer && (
+    <details>
+      <summary>What should the final treasure be?</summary>
+      <p>{faq_prize_answer}</p>
+    </details>
+  )}
+
+  {faq_classroom_answer && (
+    <details>
+      <summary>How do I manage multiple teams in a classroom?</summary>
+      <p>{faq_classroom_answer}</p>
+    </details>
+  )}
+
+  <details>
+    <summary>What if the hunt doesn't work — can I get a refund?</summary>
+    <p>Yes, absolutely. We offer a full 30-day money-back guarantee. If the hunt doesn't work at your party for any reason, email us within 30 days for a full refund. No questions, no hoops.</p>
+  </details>
+
+  <details>
+    <summary>Is this too easy for older kids?</summary>
+    <p>{faq_age_upper_answer}</p>
+  </details>
+
+  {faq_reuse_answer && (
+    <details>
+      <summary>Can I use this hunt more than once?</summary>
+      <p>{faq_reuse_answer}</p>
+    </details>
+  )}
+
+  <p class="faq-support">Still have a question? <a href="mailto:hello@thinkmystery.com">Email us</a> — we reply within a few hours.</p>
+</section>

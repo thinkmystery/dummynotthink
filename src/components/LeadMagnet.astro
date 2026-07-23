@@ -1,0 +1,15 @@
+---
+const { age_value, theme } = Astro.props
+---
+<section class="section lead-magnet">
+  <h3>Not ready to buy yet?</h3>
+  <p>Get 3 real {theme} clues your child can try right now — takes 2 minutes, no purchase needed.</p>
+  <div class="lead-form">
+    <input type="email" placeholder="your@email.com" aria-label="Email address" />
+    <select aria-label="Child age">
+      <option value="" disabled selected>My child age</option>
+      {[4,5,6,7,8,9].map(age => (<option value={age} selected={age === age_value}>{age} years old</option>))}
+    </select>
+    <button type="button">Send me the free clues</button>
+  </div>
+</section>

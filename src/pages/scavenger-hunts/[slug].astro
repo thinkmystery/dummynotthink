@@ -1,0 +1,230 @@
+---
+import { getAllSlugs } from '../../data/pages.js'
+import SiteLayout  from '../../layouts/SiteLayout.astro'
+import Hero        from '../../components/Hero.astro'
+import QuickFit    from '../../components/QuickFit.astro'
+import Includes    from '../../components/Includes.astro'
+import SampleClues from '../../components/SampleClues.astro'
+import WhyItWorks  from '../../components/WhyItWorks.astro'
+import Scenario    from '../../components/Scenario.astro'
+import AgeInsight  from '../../components/AgeInsight.astro'
+import Setup       from '../../components/Setup.astro'
+import Difficulty  from '../../components/Difficulty.astro'
+import Comparison  from '../../components/Comparison.astro'
+import CTA         from '../../components/CTA.astro'
+import Reviews     from '../../components/Reviews.astro'
+import Related     from '../../components/Related.astro'
+import LeadMagnet  from '../../components/LeadMagnet.astro'
+import FAQ         from '../../components/FAQ.astro'
+
+export async function getStaticPaths() { return getAllSlugs() }
+
+const { page } = Astro.props
+const isFullDepth     = page.content_depth === 'full'
+const isStandardDepth = page.content_depth === 'standard' || isFullDepth
+const showWhyItWorks  = page.show_why_it_works && isStandardDepth
+const showScenario    = page.show_scenario    && isStandardDepth
+const showComparison  = page.show_comparison  && isFullDepth
+const showLeadMagnet  = page.show_lead_magnet
+const showReviews     = page.show_reviews
+const showAgeInsight  = page.age_insight_title && page.age_insight_body
+
+const siteUrl      = 'https://thinkmystery.com'
+const canonicalUrl = `${siteUrl}/scavenger-hunts/${page.slug}/`
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Scavenger Hunts', url: '/scavenger-hunts/' },
+  { name: `${page.theme.charAt(0).toUpperCase() + page.theme.slice(1)} Scavenger Hunts`, url: `/scavenger-hunts/${page.theme}/` },
+  { name: page.h1, url: `/scavenger-hunts/${page.slug}/` },
+]
+
+const structuredData = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: page.seo_title, description: page.meta_description, url: canonicalUrl, isPartOf: { '@type': 'WebSite', name: 'ThinkMystery', url: siteUrl }, audience: { '@type': 'PeopleAudience', suggestedMinAge: page.age_value - 1, suggestedMaxAge: page.age_value + 1 } },
+  { '@context': 'https://schema.org', '@type': 'Product', name: page.h1, description: page.meta_description, brand: { '@type': 'Brand', name: 'ThinkMystery' }, offers: { '@type': 'Offer', price: page.product_price, priceCurrency: 'USD', availability: 'https://schema.org/InStock', seller: { '@type': 'Organization', name: 'ThinkMystery' } } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: breadcrumbs.map((item, i) => ({ '@type': 'ListItem', position: i + 1, name: item.name, item: `${siteUrl}${item.url === '/' ? '' : item.url}` })) },
+]
+---
+
+<SiteLayout
+  seo_title={page.seo_title}
+  meta_description={page.meta_description}
+  canonical_url={canonicalUrl}
+  og_image={page.og_image}
+  pinterest_image={page.pinterest_image}
+  is_staging={false}
+  silo="scavenger"
+  structured_data={structuredData}
+>
+  <main>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      {breadcrumbs.map((item, i) => (
+        <>
+          <a href={item.url}>{item.name}</a>
+          {i < breadcrumbs.length - 1 && <span>›</span>}
+        </>
+      ))}
+    </nav>
+
+    <Hero
+      h1={page.h1}
+      h2_hook={page.h2_hook}
+      hero_strap={page.hero_strap}
+      eyebrow={page.eyebrow}
+      product_price={page.product_price}
+      etsy_url={page.etsy_url}
+      cta_label={page.cta_label}
+      urgency_line={page.urgency_line}
+      setup_time={page.setup_time}
+      play_time={page.play_time}
+      group_size={page.group_size}
+      location={page.location}
+      clue_1_text={page.clue_1_text}
+      version={page.version}
+      version_date={page.version_date}
+    />
+
+    <QuickFit
+      age_value={page.age_value}
+      age_range={page.age_range}
+      setup_time={page.setup_time}
+      play_time={page.play_time}
+      group_size={page.group_size}
+      reading_label={page.reading_label}
+      reading_spec={page.reading_spec}
+      parent_effort={page.parent_effort}
+      parent_effort_n={page.parent_effort_n}
+      location={page.location}
+      not_for={page.not_for}
+    />
+
+    <Includes
+      includes_items={page.includes_items}
+      file_spec={page.file_spec}
+      value_contrast={page.value_contrast}
+      sanity_rule={page.sanity_rule}
+      guarantee_text={page.guarantee_text}
+    />
+
+    <SampleClues
+      clue_1_text={page.clue_1_text}
+      clue_1_loc={page.clue_1_loc}
+      clue_1_diff={page.clue_1_diff}
+      clue_1_why={page.clue_1_why}
+      clue_2_text={page.clue_2_text}
+      clue_2_loc={page.clue_2_loc}
+      clue_2_diff={page.clue_2_diff}
+      clue_2_why={page.clue_2_why}
+      clue_3_text={page.clue_3_text}
+      clue_3_loc={page.clue_3_loc}
+      clue_3_diff={page.clue_3_diff}
+      clue_3_why={page.clue_3_why}
+      clue_4_text={page.clue_4_text}
+      clue_4_loc={page.clue_4_loc}
+      clue_4_diff={page.clue_4_diff}
+      clue_4_why={page.clue_4_why}
+      clue_pullquote={page.clue_pullquote}
+      clue_pullquote_attr={page.clue_pullquote_attr}
+    />
+
+    {showWhyItWorks && (
+      <WhyItWorks
+        age_value={page.age_value}
+        why_1_title={page.why_1_title}
+        why_1_body={page.why_1_body}
+        why_2_title={page.why_2_title}
+        why_2_body={page.why_2_body}
+        why_3_title={page.why_3_title}
+        why_3_body={page.why_3_body}
+        maker_cred={page.maker_cred}
+      />
+    )}
+
+    {showScenario && (
+      <Scenario
+        scenario_problem={page.scenario_problem}
+        scenario_pullquote={page.scenario_pullquote}
+        scenario_body={page.scenario_body}
+        occasion_tags={page.occasion_tags}
+        occasion={page.occasion}
+        real_party_story={page.real_party_story}
+        real_party_details={page.real_party_details}
+      />
+    )}
+
+    {showAgeInsight && (
+      <AgeInsight
+        age_value={page.age_value}
+        age_insight_title={page.age_insight_title}
+        age_insight_body={page.age_insight_body}
+      />
+    )}
+
+    <Setup
+      setup_steps={page.setup_steps}
+      prize_ideas={page.prize_ideas}
+      setup_tip={page.setup_tip}
+    />
+
+    <Difficulty
+      diff_reading={page.diff_reading}
+      diff_setup={page.diff_setup}
+      diff_energy={page.diff_energy}
+      diff_puzzle={page.diff_puzzle}
+      diff_chaos={page.diff_chaos}
+      diff_summary={page.diff_summary}
+    />
+
+    {showComparison && (
+      <Comparison product_type={page.product_type} />
+    )}
+
+    <CTA
+      mid_cta_headline={page.mid_cta_headline}
+      mid_cta_sub={page.mid_cta_sub}
+      mid_cta_value_line={page.mid_cta_value_line}
+      cta_label={page.cta_label}
+      product_price={page.product_price}
+      etsy_url={page.etsy_url}
+      eyebrow={page.eyebrow}
+      version={page.version}
+    />
+
+    {showReviews && (
+      <Reviews
+        reviews={page.reviews}
+        review_avg={page.review_avg}
+        review_count={page.review_count}
+      />
+    )}
+
+    <Related
+      related={page.related}
+      age_value={page.age_value}
+      theme={page.theme}
+      occasion={page.occasion}
+    />
+
+    {showLeadMagnet && (
+      <LeadMagnet
+        age_value={page.age_value}
+        theme={page.theme}
+      />
+    )}
+
+    <FAQ
+      age_value={page.age_value}
+      occasion={page.occasion}
+      location={page.location}
+      faq_reading_answer={page.faq_reading_answer}
+      faq_duration_answer={page.faq_duration_answer}
+      faq_groups_answer={page.faq_groups_answer}
+      faq_location_answer={page.faq_location_answer}
+      faq_age_upper_answer={page.faq_age_upper_answer}
+      faq_prize_answer={page.faq_prize_answer}
+      faq_classroom_answer={page.faq_classroom_answer}
+      faq_reuse_answer={page.faq_reuse_answer}
+    />
+
+  </main>
+</SiteLayout>

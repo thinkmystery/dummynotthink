@@ -1,0 +1,31 @@
+---
+const { age_value, age_range, setup_time, play_time, group_size, reading_label, reading_spec, parent_effort, parent_effort_n, location, not_for } = Astro.props
+const tiles = [
+  { label: 'Age Range', value: age_range, sub: null, highlight: false },
+  { label: 'Sweet Spot', value: `${age_value} years old`, sub: null, highlight: true },
+  { label: 'Setup Time', value: `${setup_time} minutes`, sub: null, highlight: false },
+  { label: 'Play Time', value: `${play_time} min`, sub: null, highlight: false },
+  { label: 'Reading Level', value: reading_label, sub: reading_spec, highlight: false },
+  { label: 'Parent Effort', value: parent_effort, sub: `${parent_effort_n} / 5`, highlight: false },
+  { label: 'Location', value: `${location.charAt(0).toUpperCase() + location.slice(1)} only`, sub: null, highlight: false },
+  { label: 'Group Size', value: `${group_size} kids`, sub: null, highlight: false },
+]
+---
+<section id="quick-fit" class="section summary">
+  <h2>Quick Fit Check</h2>
+  <p class="section-sub">Scan in 10 seconds. If it matches, you are sorted.</p>
+  <div class="summary-grid">
+    {tiles.map(tile => (
+      <div class={tile.highlight ? 'summary-highlight' : ''}>
+        <span>{tile.label}</span>
+        <strong>{tile.value}{tile.sub && <small>{tile.sub}</small>}</strong>
+      </div>
+    ))}
+  </div>
+  {not_for && not_for.length > 0 && (
+    <div class="not-for">
+      <strong>Not ideal for...</strong>
+      <div class="not-for-tags">{not_for.map(tag => <span>{tag}</span>)}</div>
+    </div>
+  )}
+</section>

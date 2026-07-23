@@ -1,0 +1,15 @@
+---
+const { mid_cta_headline, mid_cta_sub, mid_cta_value_line, cta_label, product_price, etsy_url, eyebrow, version } = Astro.props
+---
+<section class="cta-section">
+  <p class="eyebrow">{eyebrow} · Version {version}</p>
+  <h2>{mid_cta_headline}</h2>
+  <p>{mid_cta_sub}</p>
+  <p class="cta-value-line">{mid_cta_value_line}</p>
+  <a class="button primary large" href={etsy_url}>{cta_label} — ${product_price}</a>
+  <div class="cta-trust-row">
+    <span>30-day guarantee</span>
+    <span>Tested at real parties</span>
+    <span>Instant download</span>
+  </div>
+</section>

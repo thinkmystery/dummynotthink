@@ -1,0 +1,324 @@
+---
+// src/pages/treasure-hunts/index.astro
+// Silo landing page for all treasure hunts
+
+const siteUrl = 'https://thinkmystery.com'
+const canonicalUrl = `${siteUrl}/treasure-hunts/`
+
+const seo_title = 'Printable Treasure Hunts for Kids — Real Maps, Real Adventures | ThinkMystery'
+const meta_description = 'Printable treasure hunts for kids aged 4–9. A real map, a backstory letter, and a dramatic chest reveal. 5-minute setup, instant download. Tested at real parties.'
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: seo_title,
+    description: meta_description,
+    url: canonicalUrl,
+    isPartOf: { '@type': 'WebSite', name: 'ThinkMystery', url: siteUrl },
+  },
+]
+
+const themes = [
+  {
+    label: 'Pirate Treasure Hunts',
+    url: '/treasure-hunts/pirate/',
+    emoji: '🗺️',
+    desc: 'Ages 5–8. A real treasure map, pirate backstory letter, and chest reveal. From a gentle co-adventure for 5-year-olds to a 45-minute atmospheric challenge for 8-year-olds.',
+    ages: 'Ages 5–8',
+    occasions: 'Birthday · Special occasions',
+    count: '4 hunts',
+    featured: true,
+    bg: '#FEF0E8',
+    border: '#F5C4A8',
+  },
+]
+
+const stats = [
+  { value: 'Real map', label: 'the birthday child carries' },
+  { value: '5 min', label: 'setup time' },
+  { value: 'Chest reveal', label: 'dramatic finale' },
+  { value: '30-day', label: 'money-back guarantee' },
+]
+
+const differences = [
+  {
+    title: 'Scavenger hunt',
+    points: [
+      'Clue cards — child collects and reads each one',
+      'Works for larger groups (6–10 children)',
+      'Fast pace — 15–35 minutes',
+      'Best for birthday parties with high group energy',
+    ],
+    cta: 'Browse scavenger hunts →',
+    url: '/scavenger-hunts/',
+    highlight: false,
+  },
+  {
+    title: 'Treasure hunt',
+    points: [
+      'Real map — birthday child carries it throughout',
+      'Intimate format — best for 1–5 children',
+      'Narrative pace — 15–45 minutes',
+      'Best for special occasions, sleepovers, small groups',
+    ],
+    cta: 'Browse treasure hunts →',
+    url: '/treasure-hunts/pirate/',
+    highlight: true,
+  },
+]
+
+const faqs = [
+  {
+    q: 'What\'s the difference between a treasure hunt and a scavenger hunt?',
+    a: 'A scavenger hunt gives children clue cards to follow in sequence. A treasure hunt gives the birthday child a physical map they carry for the entire adventure. The map makes the birthday child the captain — every decision about where to go is theirs. Parents who want the birthday child to feel genuinely special and in charge typically choose the treasure hunt format.',
+  },
+  {
+    q: 'What age range do the treasure hunts cover?',
+    a: 'Ages 4–9. The age-5 version is a gentle co-adventure with an adult, with picture-based map clues. The age-8 version has a multi-stage map, atmospheric narrative clues, a cipher bonus challenge, and runs for 35–45 minutes. Each version is genuinely calibrated for its age group.',
+  },
+  {
+    q: 'How many children do these work for?',
+    a: 'Treasure hunts work best for 1–5 children. The intimate format is part of the magic — the birthday child leads, the friends follow. For birthday parties with 6+ children, the scavenger hunt format is a better fit because it works better with high group energy.',
+  },
+  {
+    q: 'What do I need to buy for the treasure chest?',
+    a: 'A small wooden chest from any craft shop (typically under £5/$6) works perfectly with the included treasure chest label printable. Chocolate coins inside complete the reveal. The chest is not included in the download — it\'s a physical prop you source locally, but it\'s optional. Many families use a decorated box instead.',
+  },
+  {
+    q: 'How does setup work?',
+    a: 'Print the map, clues, backstory letter and certificate (about 3 minutes). Roll the map and tie it with string. Place each clue at its hiding spot using the included route guide (2 minutes). Put the treasure chest at the final location. Present the rolled map to the birthday child — the adventure begins.',
+  },
+]
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{seo_title}</title>
+  <meta name="description" content={meta_description} />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content={seo_title} />
+  <meta property="og:description" content={meta_description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  {structuredData.map(sd => (
+    <script type="application/ld+json" set:html={JSON.stringify(sd)} />
+  ))}
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Nunito Sans', sans-serif; background: #FFF9F2; color: #2C1F0F; }
+
+    .site-nav { background: #2C1F0F; padding: 0 22px; height: 52px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.1rem; color: #F5C842; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.8rem; color: rgba(255,255,255,0.75); text-decoration: none; }
+    .nav-links a:hover { color: #fff; }
+
+    .page-wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px 60px; }
+
+    .breadcrumbs { display: flex; gap: 0.4rem; align-items: center; padding: 0.75rem 0; font-size: 0.78rem; color: #9E8060; font-family: 'Nunito', sans-serif; font-weight: 700; }
+    .breadcrumbs a { color: #9E8060; text-decoration: underline; text-underline-offset: 2px; }
+
+    .silo-hero { padding: 2.5rem 0 2rem; border-bottom: 1.5px solid #DDD3C0; }
+    .silo-hero h1 { font-family: 'Nunito', sans-serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 1rem; }
+    .silo-hero-intro { font-size: 1.05rem; line-height: 1.75; color: #5C3D22; max-width: 680px; margin-bottom: 1.5rem; }
+
+    .trust-strip { display: flex; gap: 2rem; flex-wrap: wrap; padding: 1rem 1.25rem; background: #F4EDE0; border-radius: 14px; border: 1.5px solid #DDD3C0; width: fit-content; margin-bottom: 1.5rem; }
+    .trust-stat strong { display: block; font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 900; color: #E8703A; line-height: 1.2; }
+    .trust-stat span { font-family: 'Nunito', sans-serif; font-size: 0.72rem; font-weight: 700; color: #6B4E2E; text-transform: uppercase; letter-spacing: 0.3px; }
+
+    .section { padding: 2.5rem 0; border-bottom: 1.5px solid #DDD3C0; }
+    .section:last-child { border-bottom: none; }
+    .section h2 { font-family: 'Nunito', sans-serif; font-size: clamp(1.2rem, 2.5vw, 1.7rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+    .section-sub { font-size: 0.9rem; color: #6B4E2E; margin-top: -0.75rem; margin-bottom: 1.25rem; }
+
+    /* THEME CARD — full-width featured */
+    .theme-card-full { background: #FEF0E8; border: 2px solid #F5C4A8; border-radius: 20px; padding: 2rem; text-decoration: none; display: flex; gap: 2rem; align-items: flex-start; transition: transform 0.15s, box-shadow 0.15s; position: relative; }
+    .theme-card-full:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(92,61,34,0.1); }
+    .featured-badge { position: absolute; top: -12px; left: 1.5rem; background: #E8703A; color: #fff; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.68rem; padding: 3px 12px; border-radius: 999px; }
+    .theme-emoji-lg { font-size: 3rem; flex-shrink: 0; margin-top: 0.25rem; }
+    .theme-copy h3 { font-family: 'Nunito', sans-serif; font-size: 1.25rem; font-weight: 900; color: #2C1F0F; margin-bottom: 0.5rem; }
+    .theme-copy p { font-size: 0.9rem; color: #5C3D22; line-height: 1.7; margin-bottom: 0.75rem; }
+    .theme-meta { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .theme-meta span { font-family: 'Nunito', sans-serif; font-size: 0.7rem; font-weight: 700; color: #6B4E2E; background: #fff; border-radius: 999px; padding: 2px 9px; border: 1px solid #F5C4A8; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.4rem; background: #E8703A; color: #fff; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.9rem; padding: 11px 24px; border-radius: 999px; text-decoration: none; }
+
+    /* MAP MOMENT */
+    .map-moment { background: linear-gradient(135deg, #FFF9F2, #F4EDE0); border-radius: 20px; padding: 2rem; }
+    .map-moment h2 { font-family: 'Nunito', sans-serif; font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 1rem; }
+    .map-moment p { font-size: 0.97rem; color: #5C3D22; line-height: 1.8; max-width: 700px; margin-bottom: 0.85rem; }
+
+    /* COMPARISON */
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .comparison-card { border-radius: 18px; padding: 1.5rem; border: 1.5px solid #DDD3C0; background: #fff; }
+    .comparison-card.highlight { background: #FEF0E8; border-color: #F5C4A8; border-width: 2px; }
+    .comparison-card h3 { font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 900; color: #2C1F0F; margin-bottom: 1rem; }
+    .comparison-card ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
+    .comparison-card li { font-size: 0.875rem; color: #5C3D22; line-height: 1.5; padding-left: 1.25rem; position: relative; }
+    .comparison-card li::before { content: '→'; position: absolute; left: 0; color: #E8703A; font-weight: 900; }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 0.4rem; background: #2C1F0F; color: #F5C842; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.82rem; padding: 9px 20px; border-radius: 999px; text-decoration: none; }
+
+    /* AGES GRID */
+    .ages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .age-card { background: #fff; border: 1.5px solid #DDD3C0; border-radius: 16px; padding: 1.1rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.35rem; transition: transform 0.15s; }
+    .age-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(92,61,34,0.08); }
+    .age-label { font-family: 'Nunito', sans-serif; font-size: 0.7rem; font-weight: 700; color: #9E8060; text-transform: uppercase; letter-spacing: 0.5px; }
+    .age-card h3 { font-family: 'Nunito', sans-serif; font-size: 0.9rem; font-weight: 800; color: #2C1F0F; }
+    .age-card p { font-size: 0.8rem; color: #6B4E2E; line-height: 1.5; }
+    .age-cta { font-family: 'Nunito', sans-serif; font-size: 0.78rem; font-weight: 800; color: #E8703A; margin-top: 0.25rem; }
+
+    /* FAQ */
+    .faq-list { max-width: 760px; display: flex; flex-direction: column; }
+    details { border-bottom: 1.5px solid #DDD3C0; }
+    details:first-child { border-top: 1.5px solid #DDD3C0; }
+    summary { padding: 1rem 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem; color: #2C1F0F; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    summary::after { content: '+'; font-size: 1.1rem; color: #E8703A; font-weight: 900; }
+    details[open] summary::after { content: '−'; }
+    details p { font-size: 0.9rem; color: #5C3D22; line-height: 1.75; padding-bottom: 1rem; max-width: 680px; }
+
+    .site-footer { background: #2C1F0F; padding: 2rem 22px; text-align: center; }
+    .footer-brand { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1rem; color: #F5C842; margin-bottom: 0.35rem; }
+    .footer-tagline { font-size: 0.78rem; color: rgba(255,255,255,0.5); font-family: 'Nunito', sans-serif; }
+
+    @media (max-width: 900px) {
+      .comparison-grid { grid-template-columns: 1fr; }
+      .ages-grid { grid-template-columns: 1fr 1fr; }
+      .theme-card-full { flex-direction: column; gap: 1rem; }
+    }
+    @media (max-width: 560px) {
+      .ages-grid { grid-template-columns: 1fr; }
+      .trust-strip { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="/" class="nav-brand">ThinkMystery</a>
+  <div class="nav-links">
+    <a href="/scavenger-hunts/">Scavenger Hunts</a>
+    <a href="/treasure-hunts/">Treasure Hunts</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span>›</span>
+    <span>Treasure Hunts</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="silo-hero">
+    <h1>Printable Treasure Hunts for Kids</h1>
+    <p class="silo-hero-intro">A treasure hunt is different from a scavenger hunt in one specific way: the birthday child gets a real map. They carry it for the entire adventure. Every decision about where to go is theirs. The chest reveal at the end is a genuine emotional moment — not just the activity stopping.</p>
+    <div class="trust-strip">
+      {stats.map(stat => (
+        <div class="trust-stat">
+          <strong>{stat.value}</strong>
+          <span>{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- FEATURED THEME -->
+  <section class="section">
+    <h2>Available now</h2>
+    {themes.map(theme => (
+      <a href={theme.url} class="theme-card-full">
+        <div class="featured-badge">Only theme available</div>
+        <div class="theme-emoji-lg">{theme.emoji}</div>
+        <div class="theme-copy">
+          <h3>{theme.label}</h3>
+          <p>{theme.desc}</p>
+          <div class="theme-meta">
+            <span>{theme.ages}</span>
+            <span>{theme.occasions}</span>
+            <span>{theme.count}</span>
+          </div>
+          <span class="btn-primary">Browse pirate treasure hunts →</span>
+        </div>
+      </a>
+    ))}
+  </section>
+
+  <!-- THE MAP MOMENT -->
+  <section class="section">
+    <div class="map-moment">
+      <h2>What makes a treasure hunt different</h2>
+      <p>When a 6-year-old holds a treasure map, something specific happens. They stop being a participant and become the captain. They carry the map for the entire adventure. They make every navigational decision. Their friends follow their lead.</p>
+      <p>Several parents have described their child putting the map in their memory box that night — the way they keep drawings and birthday cards. That doesn't happen with clue cards. It happens with a map.</p>
+      <p>The treasure chest reveal is different too. A scavenger hunt ends when the last clue is found. A treasure hunt ends with a physical discovery — the chest, the coins, the certificate. For a child who has been on a real adventure for 20 minutes, this ending carries genuine emotional weight.</p>
+    </div>
+  </section>
+
+  <!-- WHICH FORMAT -->
+  <section class="section">
+    <h2>Treasure hunt or scavenger hunt?</h2>
+    <p class="section-sub">Both formats work — they're designed for different contexts.</p>
+    <div class="comparison-grid">
+      {differences.map(diff => (
+        <div class={`comparison-card${diff.highlight ? ' highlight' : ''}`}>
+          <h3>{diff.title}</h3>
+          <ul>
+            {diff.points.map(point => <li>{point}</li>)}
+          </ul>
+          <a href={diff.url} class={diff.highlight ? 'btn-primary' : 'btn-secondary'}>{diff.cta}</a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- AGES -->
+  <section class="section">
+    <h2>Choose by age</h2>
+    <p class="section-sub">Each version is genuinely calibrated for its age — not just labelled differently.</p>
+    <div class="ages-grid">
+      {[
+        { age: 5, url: '/treasure-hunts/pirate-5-year-old-birthday/', title: 'Age 5 · Pirate', desc: 'Co-adventure format. Picture-based map. Adult reads clues aloud. Gentle pace, maximum magic.', time: '15–25 min' },
+        { age: 6, url: '/treasure-hunts/pirate-6-year-old-birthday/', title: 'Age 6 · Pirate', desc: 'Child-led from start to finish. Birthday child carries the map and navigates independently.', time: '20–30 min' },
+        { age: 7, url: '/treasure-hunts/pirate-7-year-old-birthday/', title: 'Age 7 · Pirate', desc: 'More complex map, narrative clues, longer adventure. Fully independent. Map goes on the wall.', time: '30–40 min' },
+        { age: 8, url: '/treasure-hunts/pirate-8-year-old-birthday/', title: 'Age 8 · Pirate', desc: 'Multi-stage map, atmospheric language, cipher bonus challenge. The most immersive version.', time: '35–45 min' },
+      ].map(item => (
+        <a href={item.url} class="age-card">
+          <span class="age-label">Age {item.age}</span>
+          <h3>{item.title}</h3>
+          <p>{item.desc}</p>
+          <span style="font-family:'Nunito',sans-serif;font-size:0.72rem;font-weight:700;color:#9E8060;">{item.time}</span>
+          <span class="age-cta">See this hunt →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      {faqs.map((faq, i) => (
+        <details open={i === 0}>
+          <summary>{faq.q}</summary>
+          <p>{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <p class="footer-brand">ThinkMystery</p>
+  <p class="footer-tagline">The only mystery games tested with real kids before we sell them.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+---
+const { clue_1_text, clue_1_loc, clue_1_diff, clue_1_why, clue_2_text, clue_2_loc, clue_2_diff, clue_2_why, clue_3_text, clue_3_loc, clue_3_diff, clue_3_why, clue_4_text, clue_4_loc, clue_4_diff, clue_4_why, clue_pullquote, clue_pullquote_attr } = Astro.props
+const clues = [
+  { n: 1, text: clue_1_text, loc: clue_1_loc, diff: clue_1_diff, why: clue_1_why },
+  { n: 2, text: clue_2_text, loc: clue_2_loc, diff: clue_2_diff, why: clue_2_why },
+  { n: 3, text: clue_3_text, loc: clue_3_loc, diff: clue_3_diff, why: clue_3_why },
+  { n: 4, text: clue_4_text, loc: clue_4_loc, diff: clue_4_diff, why: clue_4_why },
+]
+---
+<section id="sample-clues" class="section sample">
+  <p class="eyebrow">Real Preview</p>
+  <h2>See Exactly What Your Child Will Solve</h2>
+  <p>These are real clues from the download — same vocabulary, same hiding spots, same difficulty.</p>
+  <div class="clue-grid">
+    {clues.map(clue => (
+      <article class="clue-card">
+        <div class="clue-card-header"><span>Clue {clue.n}</span><span class="clue-diff">{clue.diff}</span></div>
+        <p>"{clue.text}"</p>
+        <strong>Hiding spot: {clue.loc}</strong>
+        <p class="clue-why">{clue.why}</p>
+      </article>
+    ))}
+  </div>
+  <blockquote class="clue-pull">"{clue_pullquote}"<cite>— {clue_pullquote_attr}</cite></blockquote>
+</section>

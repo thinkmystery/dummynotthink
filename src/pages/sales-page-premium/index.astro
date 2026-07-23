@@ -1,0 +1,74 @@
+---
+const title = "Sales Page Premium";
+---
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{title}</title><meta name="robots" content="noindex,nofollow"/><style>
+:root{--green:#123522;--green2:#1d4a30;--ink:#111;--cream:#f7f1e6;--white:#fff;--gold:#b8892a;--muted:#555;--line:#d8cfbf}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:500;margin:0 0 18px;color:var(--ink)}
+h1{font-size:clamp(44px,7vw,78px);line-height:.96;letter-spacing:-.045em}
+h2{font-size:clamp(32px,4.5vw,56px);line-height:1.05;letter-spacing:-.035em}
+h3{font-size:24px}
+p{font-size:18px;color:var(--muted);margin:0 0 16px}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.nav{background:var(--green);color:white;padding:14px 0;border-bottom:4px solid var(--gold)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px}
+.logo{font-weight:800;letter-spacing:.04em;color:white}
+.hero{background:var(--green);color:white;padding:80px 0}
+.hero h1{color:white}
+.hero p{color:#e7dfd0;font-size:22px;max-width:780px}
+.gold{color:var(--gold)}
+.btn{display:inline-block;text-decoration:none;border-radius:999px;padding:14px 22px;background:var(--gold);color:var(--ink);font-weight:800;margin-top:18px}
+.btn.secondary{background:white;color:var(--green)}
+section{padding:68px 0;border-bottom:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+.eyebrow{color:var(--gold);font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px}
+.dark{background:var(--ink);color:white}
+.dark h1,.dark h2{color:white}
+.dark > .wrap > p{color:#ddd}
+.card{
+  background:#fff !important;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:26px;
+  box-shadow:0 8px 22px rgba(0,0,0,.06);
+  color:#111 !important;
+}
+.card h1,.card h2,.card h3,.dark .card h1,.dark .card h2,.dark .card h3{
+  color:#111 !important;
+}
+.card p,.card span,.card div,.card li,
+.dark .card p,.dark .card span,.dark .card div,.dark .card li{
+  color:#444 !important;
+}
+.mock{
+  background:#fff !important;
+  border-radius:24px;
+  border:1px solid var(--line);
+  padding:28px;
+  box-shadow:0 24px 60px rgba(0,0,0,.15);
+  color:#111 !important;
+}
+.mock h1,.mock h2,.mock h3,.mock .mock-title{color:var(--green) !important}
+.mock p,.mock div{color:#444}
+.mock-title{font-family:Georgia,"Times New Roman",serif;font-size:30px;color:var(--green);margin-bottom:12px}
+.line{height:10px;background:#ddd;border-radius:10px;margin:10px 0}
+.price{font-family:Georgia,"Times New Roman",serif;font-size:42px;color:var(--gold)!important;line-height:1}
+.table{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:white;margin-top:24px}
+.row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.cell{padding:18px 20px;color:#111;background:white}
+.value{text-align:right;color:var(--gold)!important;font-weight:800}
+@media(max-width:850px){.grid,.three{grid-template-columns:1fr}.hero p{font-size:19px}.wrap{padding:0 18px}.nav .wrap{display:block}.row{grid-template-columns:1fr}.value{text-align:left;padding-top:0}}
+</style></head>
+<body>
+<div class="nav"><div class="wrap"><div class="logo">ThinkMystery Premium</div><div>V2 premium sales page mockup</div></div></div>
+<header class="hero"><div class="wrap grid"><div><div class="eyebrow">Premium Physical</div><h1>A package arrives. Their name is on the cover.</h1><p>A beautifully printed adventure booklet, personalized for the child’s age, mailed every month. Digital solves the activity problem. Premium creates the moment.</p><a class="btn" href="#pricing">Get the first pack</a></div><div class="mock"><div style="background:#123522;color:white;border-radius:14px;padding:34px;border-right:6px solid #b8892a"><div style="font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:#d8c088">ThinkMystery Premium</div><div class="mock-title" style="color:white!important;margin-top:18px">Emma’s<br/>October<br/>Adventure</div><p style="color:#e9dfcf!important">The Haunted Library Mystery</p><span style="display:inline-block;background:#b8892a;color:#111!important;border-radius:6px;padding:5px 9px;font-weight:800;font-size:12px">Age 7 Edition</span></div><div style="background:white;padding:22px;border-radius:0 0 14px 14px"><div class="line"></div><div class="line" style="width:80%"></div><div class="line" style="width:60%"></div></div></div></div></header>
+<section><div class="wrap grid"><div><div class="eyebrow">Why Physical Matters</div><h2>It arrives as an event, not another file.</h2><p>Something changes when a child sees their name on a thing that arrived in the post. It feels like it was made for them — because it was.</p><p>The digital version is useful. The printed version is memorable.</p></div><div class="card"><h3>Premium = higher ARPU</h3><p>The same content engine becomes a premium physical product with stronger emotional value, gifting potential, and retention.</p></div></div></section>
+<section class="dark"><div class="wrap"><div class="eyebrow">What’s Inside</div><h2>Every month, a personalized adventure pack.</h2><div class="three"><div class="card"><h3>Name on the cover</h3><p>The child sees immediately that it belongs to them.</p></div><div class="card"><h3>Main adventure</h3><p>12–20 pages of mystery, escape, treasure hunt, or detective play.</p></div><div class="card"><h3>Seasonal content</h3><p>Halloween, Christmas, summer, travel, birthdays, and school breaks.</p></div></div></div></section>
+<section><div class="wrap"><div class="eyebrow">Digital vs Premium</div><h2>Digital is useful. Premium is magical.</h2><div class="table"><div class="row"><div class="cell">Full activity library</div><div class="cell value">Both</div></div><div class="row"><div class="cell">New monthly content</div><div class="cell value">Both</div></div><div class="row"><div class="cell">Physical pack in the post</div><div class="cell value">Premium</div></div><div class="row"><div class="cell">Child’s name on the cover</div><div class="cell value">Premium</div></div><div class="row"><div class="cell">Arrives as an event</div><div class="cell value">Premium</div></div></div></div></section>
+<section id="pricing"><div class="wrap"><div class="eyebrow">Pricing</div><h2>Every month, something arrives for them.</h2><div class="grid"><div class="card"><h3>Monthly</h3><div class="price">$35/mo</div><p>Printed pack mailed monthly, full digital library, US shipping included, cancel future shipments anytime.</p><a class="btn secondary" href="#">Start premium</a></div><div class="card"><h3>Annual</h3><div class="price">$329/yr</div><p>12 printed packs, full digital access, priority releases, first pack ships within 3 business days.</p><a class="btn" href="#">Start annual</a></div></div></div></section>
+<section><div class="wrap"><a href="/investors/">← Back to investor brief</a></div></section>
+</body></html>

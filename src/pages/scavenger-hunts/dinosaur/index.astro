@@ -1,0 +1,319 @@
+---
+// src/pages/scavenger-hunts/dinosaur/index.astro
+import HubLayout from '../../../layouts/HubLayout.astro'
+import { getHub } from '../../../data/hubs.js'
+
+const hub = getHub('scavenger-hunts', 'dinosaur')
+const siteUrl = 'https://thinkmystery.com'
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Scavenger Hunts', url: '/scavenger-hunts/' },
+  { name: 'Dinosaur Scavenger Hunts', url: '/scavenger-hunts/dinosaur/' },
+]
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: hub.seo_title,
+    description: hub.meta_description,
+    url: hub.canonical_url,
+    isPartOf: { '@type': 'WebSite', name: 'ThinkMystery', url: siteUrl },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map((item, i) => ({
+      '@type': 'ListItem', position: i + 1,
+      name: item.name, item: `${siteUrl}${item.url}`,
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: hub.faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  },
+]
+---
+
+<HubLayout
+  seo_title={hub.seo_title}
+  meta_description={hub.meta_description}
+  canonical_url={hub.canonical_url}
+  og_image={hub.og_image}
+  is_staging={false}
+  silo="scavenger"
+  structured_data={structuredData}
+>
+  <main class="hub-main">
+
+    <!-- BREADCRUMBS -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      {breadcrumbs.map((item, i) => (
+        <>
+          <a href={item.url}>{item.name}</a>
+          {i < breadcrumbs.length - 1 && <span>›</span>}
+        </>
+      ))}
+    </nav>
+
+    <!-- HERO -->
+    <section class="hub-hero">
+      <div class="hub-hero-inner">
+        <p class="eyebrow">{hub.theme_emoji} Dinosaur Scavenger Hunts</p>
+        <h1>{hub.h1}</h1>
+        <p class="hub-intro">{hub.intro}</p>
+        <div class="hub-trust-strip">
+          {hub.trust_stats.map(stat => (
+            <div class="hub-trust-stat">
+              <strong>{stat.value}</strong>
+              <span>{stat.label}</span>
+            </div>
+          ))}
+        </div>
+        <div class="hub-jump-links">
+          <a href="#choose-your-hunt">Choose by age →</a>
+          <a href="#why-dinosaur">Why dinosaur works →</a>
+          <a href="#how-to-run">Setup guide →</a>
+          <a href="#faq">FAQs →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHOOSE YOUR HUNT -->
+    <section id="choose-your-hunt" class="section hub-spokes">
+      <h2>{hub.spokes_title}</h2>
+      <p class="section-sub">{hub.spokes_intro}</p>
+      <div class="hub-spoke-grid">
+        {hub.spokes.map(spoke => (
+          <a href={spoke.url} class={`hub-spoke-card${spoke.featured ? ' featured' : ''}`}>
+            {spoke.featured && <div class="hub-spoke-badge">Most popular</div>}
+            <div class="hub-spoke-emoji">{spoke.emoji}</div>
+            <h3>{spoke.label}</h3>
+            <div class="hub-spoke-meta">
+              <span>Age {spoke.age}</span>
+              <span>{spoke.occasion}</span>
+              <span class="hub-spoke-diff">{spoke.difficulty}</span>
+            </div>
+            <p>{spoke.desc}</p>
+            <span class="hub-spoke-cta">See this hunt →</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- WHY THIS THEME — 3 full editorial sections -->
+    <section id="why-dinosaur" class="section hub-why">
+      {hub.why_sections.map((section, i) => (
+        <div class={`hub-why-section${i > 0 ? ' hub-why-section--border' : ''}`}>
+          <h2>{section.title}</h2>
+          <div class="hub-why-body">
+            {section.body.split('\n\n').map(para => (
+              <p>{para}</p>
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <!-- PRACTICAL GUIDE -->
+    <section id="how-to-run" class="section hub-practical">
+      <h2>{hub.practical_title}</h2>
+      <div class="hub-practical-grid">
+        {hub.practical_items.map((item, i) => (
+          <div class="hub-practical-item">
+            <div class="hub-practical-num">{i + 1}</div>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- LEAD MAGNET -->
+    <section class="section hub-lead-magnet">
+      <div class="hub-lm-inner">
+        <div class="hub-lm-copy">
+          <p class="eyebrow">Free Download</p>
+          <h2>{hub.lead_magnet.title}</h2>
+          <p class="hub-lm-sub">{hub.lead_magnet.subtitle}</p>
+          <p>{hub.lead_magnet.description}</p>
+          <ul class="hub-lm-bullets">
+            {hub.lead_magnet.bullet_preview.map(bullet => (
+              <li>{bullet}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="hub-lm-form">
+          <div class="hub-lm-cover">
+            <div class="hub-lm-cover-emoji">{hub.lead_magnet.cover_emoji}</div>
+            <div class="hub-lm-cover-title">25 Ideas</div>
+            <div class="hub-lm-cover-sub">for a Fantastic Pirate Scavenger Hunt</div>
+          </div>
+          <input type="email" placeholder="your@email.com" aria-label="Email address" class="hub-lm-input" />
+          <button type="button" class="button primary hub-lm-btn">Send me the free PDF →</button>
+          <p class="hub-lm-note">Instant download. No spam, ever.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMON MISTAKES -->
+    <section class="section hub-mistakes">
+      <h2>{hub.mistakes_title}</h2>
+      <div class="hub-mistakes-grid">
+        {hub.mistakes.map(mistake => (
+          <div class="hub-mistake-card">
+            <div class="hub-mistake-icon">✗</div>
+            <h3>{mistake.title}</h3>
+            <p>{mistake.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- COMPARISON -->
+    <section class="section hub-comparison">
+      <h2>{hub.comparison_title}</h2>
+      <p>{hub.comparison_body}</p>
+      <a href={hub.comparison_cta_url} class="button secondary">
+        {hub.comparison_cta_label}
+      </a>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section hub-faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="hub-faq-list">
+        {hub.faqs.map((faq, i) => (
+          <details open={i === 0}>
+            <summary>{faq.q}</summary>
+            <p>{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- RELATED -->
+    <section class="section hub-related">
+      <h2>More Printable Games</h2>
+      <div class="hub-related-grid">
+        {hub.related_silos.map(rel => (
+          <a href={rel.url} class="hub-related-card">
+            <strong>{rel.label}</strong>
+            <span>{rel.desc}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+  </main>
+</HubLayout>
+
+<style>
+  .hub-main { max-width: 1120px; margin: 0 auto; padding: 0 22px 60px; }
+
+  /* Hero */
+  .hub-hero { padding: 3rem 0 2rem; border-bottom: 1.5px solid #DDD3C0; margin-bottom: 0; }
+  .hub-hero-inner { max-width: 760px; }
+  .hub-hero h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.05; letter-spacing: -0.04em; margin: 0.5rem 0 1rem; }
+  .hub-intro { font-size: 1.05rem; line-height: 1.7; color: #6B4E2E; margin-bottom: 1.5rem; max-width: 640px; }
+
+  /* Trust strip */
+  .hub-trust-strip { display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; padding: 1rem 1.25rem; background: #F4EDE0; border-radius: 14px; border: 1.5px solid #DDD3C0; width: fit-content; }
+  .hub-trust-stat strong { display: block; font-size: 1.2rem; font-weight: 900; color: #E8703A; font-family: 'Nunito', sans-serif; line-height: 1; }
+  .hub-trust-stat span { font-size: 0.72rem; font-weight: 700; color: #6B4E2E; font-family: 'Nunito', sans-serif; text-transform: uppercase; letter-spacing: 0.3px; }
+
+  /* Jump links */
+  .hub-jump-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .hub-jump-links a { font-size: 0.875rem; font-weight: 700; color: #E8703A; text-decoration: underline; text-underline-offset: 3px; font-family: 'Nunito', sans-serif; }
+
+  /* Spoke grid */
+  .hub-spoke-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-top: 1.5rem; }
+  .hub-spoke-card { background: #fff; border: 1.5px solid #DDD3C0; border-radius: 18px; padding: 1.25rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.5rem; transition: transform 0.15s, box-shadow 0.15s; position: relative; }
+  .hub-spoke-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(92,61,34,0.1); }
+  .hub-spoke-card.featured { border-color: #E8703A; border-width: 2px; }
+  .hub-spoke-badge { position: absolute; top: -11px; left: 1.25rem; background: #E8703A; color: #fff; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.68rem; padding: 3px 12px; border-radius: 999px; }
+  .hub-spoke-emoji { font-size: 1.75rem; }
+  .hub-spoke-card h3 { font-size: 0.95rem; font-weight: 800; color: #2C1F0F; margin: 0; font-family: 'Nunito', sans-serif; }
+  .hub-spoke-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .hub-spoke-meta span { font-size: 0.7rem; font-weight: 700; color: #6B4E2E; background: #F4EDE0; border-radius: 999px; padding: 2px 9px; font-family: 'Nunito', sans-serif; }
+  .hub-spoke-diff { color: #E8703A !important; background: #FEF0E8 !important; }
+  .hub-spoke-card p { font-size: 0.855rem; color: #6B4E2E; line-height: 1.55; flex: 1; }
+  .hub-spoke-cta { font-size: 0.8rem; font-weight: 800; color: #E8703A; font-family: 'Nunito', sans-serif; margin-top: 0.25rem; }
+
+  /* Why sections */
+  .hub-why { background: linear-gradient(140deg, #FFF9F2, #F4EDE0); }
+  .hub-why-section { padding-bottom: 2rem; margin-bottom: 2rem; }
+  .hub-why-section--border { border-top: 1.5px solid #DDD3C0; padding-top: 2rem; }
+  .hub-why-section h2 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); letter-spacing: -0.03em; margin-bottom: 1rem; }
+  .hub-why-body { display: flex; flex-direction: column; gap: 0.85rem; max-width: 760px; }
+  .hub-why-body p { font-size: 0.97rem; line-height: 1.8; color: #5C3D22; }
+
+  /* Practical guide */
+  .hub-practical-grid { display: flex; flex-direction: column; gap: 0; margin-top: 1.25rem; }
+  .hub-practical-item { display: flex; gap: 1.25rem; padding: 1.1rem 0; border-bottom: 1.5px solid #DDD3C0; align-items: flex-start; }
+  .hub-practical-item:last-child { border-bottom: none; }
+  .hub-practical-num { width: 32px; height: 32px; background: #E8703A; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.875rem; flex-shrink: 0; margin-top: 2px; }
+  .hub-practical-item h3 { font-size: 0.95rem; font-weight: 800; color: #2C1F0F; margin: 0 0 0.35rem; font-family: 'Nunito', sans-serif; }
+  .hub-practical-item p { font-size: 0.875rem; color: #6B4E2E; line-height: 1.65; margin: 0; }
+
+  /* Lead magnet */
+  .hub-lead-magnet { background: linear-gradient(135deg, #FFF9F2, #FEF0E8) !important; border-color: #F5C4A8 !important; }
+  .hub-lm-inner { display: grid; grid-template-columns: 1fr auto; gap: 2.5rem; align-items: start; }
+  .hub-lm-copy h2 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); margin-bottom: 0.35rem; }
+  .hub-lm-sub { font-size: 0.8rem; font-weight: 800; color: #E8703A; font-family: 'Nunito', sans-serif; margin-bottom: 0.5rem !important; }
+  .hub-lm-bullets { list-style: none; padding: 0; margin-top: 0.85rem; display: flex; flex-direction: column; gap: 0.35rem; }
+  .hub-lm-bullets li { font-size: 0.855rem; color: #5C3D22; font-weight: 600; padding-left: 1.25rem; position: relative; }
+  .hub-lm-bullets li::before { content: '✓'; position: absolute; left: 0; color: #E8703A; font-weight: 900; }
+  .hub-lm-form { display: flex; flex-direction: column; gap: 0.6rem; min-width: 240px; }
+  .hub-lm-cover { background: #5C3D22; border-radius: 14px; padding: 1.5rem 1.25rem; text-align: center; margin-bottom: 0.25rem; }
+  .hub-lm-cover-emoji { font-size: 2rem; margin-bottom: 0.5rem; }
+  .hub-lm-cover-title { font-size: 1.4rem; font-weight: 900; color: #F5C842; font-family: 'Nunito', sans-serif; line-height: 1; margin-bottom: 0.25rem; }
+  .hub-lm-cover-sub { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.75); font-family: 'Nunito', sans-serif; line-height: 1.3; }
+  .hub-lm-input { padding: 10px 16px; border-radius: 999px; border: 1.5px solid #DDD3C0; font-size: 0.875rem; background: #fff; color: #2C1F0F; }
+  .hub-lm-btn { width: 100%; justify-content: center; }
+  .hub-lm-note { font-size: 0.72rem; color: #9E8060; text-align: center; margin: 0 !important; font-family: 'Nunito', sans-serif; }
+
+  /* Mistakes */
+  .hub-mistakes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; margin-top: 1.25rem; }
+  .hub-mistake-card { background: #FFF9F2; border: 1.5px solid #DDD3C0; border-radius: 14px; padding: 1.1rem 1.2rem; }
+  .hub-mistake-icon { width: 28px; height: 28px; background: #FEF0E8; border: 1.5px solid #F5C4A8; color: #E8703A; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.8rem; margin-bottom: 0.65rem; font-family: 'Nunito', sans-serif; }
+  .hub-mistake-card h3 { font-size: 0.9rem; font-weight: 800; color: #2C1F0F; margin: 0 0 0.35rem; font-family: 'Nunito', sans-serif; }
+  .hub-mistake-card p { font-size: 0.855rem; color: #6B4E2E; line-height: 1.6; margin: 0; }
+
+  /* Comparison */
+  .hub-comparison p { font-size: 0.97rem; line-height: 1.75; color: #6B4E2E; max-width: 680px; margin-bottom: 1.25rem; }
+
+  /* FAQ */
+  .hub-faq-list { max-width: 760px; margin-top: 1rem; }
+
+  /* Related */
+  .hub-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.25rem; }
+  .hub-related-card { background: #fff; border: 1.5px solid #DDD3C0; border-radius: 16px; padding: 1rem 1.1rem; text-decoration: none; display: flex; flex-direction: column; gap: 4px; transition: transform 0.15s; }
+  .hub-related-card:hover { transform: translateY(-2px); }
+  .hub-related-card strong { font-size: 0.9rem; color: #2C1F0F; font-family: 'Nunito', sans-serif; }
+  .hub-related-card span { font-size: 0.8rem; color: #6B4E2E; line-height: 1.4; }
+
+  .section-sub { font-size: 0.9rem; color: #6B4E2E; margin-bottom: 1rem; margin-top: -0.5rem; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hub-spoke-grid { grid-template-columns: 1fr 1fr; }
+    .hub-related-grid { grid-template-columns: 1fr 1fr; }
+    .hub-mistakes-grid { grid-template-columns: 1fr; }
+    .hub-lm-inner { grid-template-columns: 1fr; }
+    .hub-lm-form { min-width: auto; }
+  }
+  @media (max-width: 560px) {
+    .hub-spoke-grid { grid-template-columns: 1fr; }
+    .hub-related-grid { grid-template-columns: 1fr; }
+    .hub-trust-strip { gap: 1rem; }
+  }
+</style>

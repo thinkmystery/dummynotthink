@@ -1,0 +1,13 @@
+---
+const { age_value, why_1_title, why_1_body, why_2_title, why_2_body, why_3_title, why_3_body, maker_cred } = Astro.props
+const icons = ['📖', '🏠', '🏆']
+const cards = [{ title: why_1_title, body: why_1_body }, { title: why_2_title, body: why_2_body }, { title: why_3_title, body: why_3_body }]
+---
+<section class="section">
+  <h2>Designed for {age_value}-Year-Olds. Not Adapted — Designed.</h2>
+  <p class="section-sub">Every clue, word choice, and hiding spot is calibrated to what a {age_value}-year-old can actually do independently.</p>
+  <div class="feature-grid">
+    {cards.map((card, i) => (<div><div class="why-icon">{icons[i]}</div><h3>{card.title}</h3><p>{card.body}</p></div>))}
+  </div>
+  <div class="maker-cred"><p>{maker_cred}</p></div>
+</section>

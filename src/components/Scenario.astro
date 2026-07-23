@@ -1,0 +1,38 @@
+---
+// src/components/Scenario.astro
+const {
+  scenario_problem,
+  scenario_pullquote,
+  scenario_body,
+  occasion_tags,
+  occasion,
+  real_party_story,
+  real_party_details,
+} = Astro.props
+
+const bgMap = {
+  'birthday':  'linear-gradient(140deg,#FFF9F2,#F3E8D4)',
+  'rainy-day': 'linear-gradient(140deg,#EAF1FB,#E0EEF8)',
+  'classroom': 'linear-gradient(140deg,#EAF5EE,#D8F0E0)',
+  'holiday':   'linear-gradient(140deg,#FFFCE8,#F5EED4)',
+}
+const bg = bgMap[occasion] ?? bgMap['birthday']
+---
+
+<section class="section scenario-section" style={`background:${bg}`}>
+  <h2>Here Is What Actually Happens</h2>
+  <div class="occasion-tags">
+    {occasion_tags.map(tag => <span>{tag}</span>)}
+  </div>
+  <p class="scenario-problem">{scenario_problem}</p>
+  <blockquote class="scenario-pull">"{scenario_pullquote}"</blockquote>
+  <p>{scenario_body}</p>
+
+  {real_party_story && (
+    <div class="real-party-story">
+      <p class="real-party-label">📍 From a real party</p>
+      <p class="real-party-text">{real_party_story}</p>
+      {real_party_details && <p class="real-party-details">{real_party_details}</p>}
+    </div>
+  )}
+</section>

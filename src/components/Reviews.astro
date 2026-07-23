@@ -1,0 +1,22 @@
+---
+const { reviews, review_avg, review_count } = Astro.props
+---
+<section class="section">
+  <h2>What Parents Say</h2>
+  <div class="review-meta">
+    <span class="review-stars">★★★★★</span>
+    <span class="review-total">{review_avg} from {review_count} reviews</span>
+  </div>
+  <div class="feature-grid">
+    {reviews.map(r => (
+      <div class="review-card">
+        <div class="review-obj">✓ {r.objection}</div>
+        <p class="review-text">"{r.text}"</p>
+        <div class="reviewer-row">
+          <div class="reviewer-av">{r.initials}</div>
+          <div><strong>{r.name}</strong><span class="reviewer-detail">{r.detail}</span></div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

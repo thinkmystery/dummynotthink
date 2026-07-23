@@ -1,0 +1,79 @@
+---
+import '../styles/global.css'
+import '../styles/theme-scavenger.css'
+// src/layouts/SiteLayout.astro
+const {
+  seo_title, meta_description, canonical_url,
+  og_image, pinterest_image, is_staging,
+  gtm_id = 'GTM-XXXXXXX', silo = 'scavenger',
+  structured_data = [],
+} = Astro.props
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{seo_title}</title>
+  <meta name="description" content={meta_description} />
+  <link rel="canonical" href={canonical_url} />
+  <meta name="robots" content={is_staging ? 'noindex,nofollow' : 'index,follow,max-image-preview:large'} />
+  <meta name="theme-color" content="#5C3D22" />
+  <meta name="author" content="ThinkMystery" />
+
+  <meta property="og:site_name" content="ThinkMystery" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={seo_title} />
+  <meta property="og:description" content={meta_description} />
+  <meta property="og:url" content={canonical_url} />
+  <meta property="og:image" content={og_image} />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={seo_title} />
+  <meta name="twitter:description" content={meta_description} />
+  <meta name="twitter:image" content={og_image} />
+
+  <meta name="pinterest-rich-pin" content="true" />
+  <meta property="pin:media" content={pinterest_image} />
+
+  <script is:inline>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');
+  </script>
+
+  {structured_data.map(item => (
+    <script type="application/ld+json" set:html={JSON.stringify(item)} />
+  ))}
+</head>
+
+<body class={`theme-${silo}`}>
+
+  <noscript>
+    <iframe src={`https://www.googletagmanager.com/ns.html?id=${gtm_id}`}
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
+  <header class="site-header">
+    <a href="/" class="logo" aria-label="ThinkMystery home">ThinkMystery</a>
+    <nav aria-label="Main navigation">
+      <a href="/scavenger-hunts/">Scavenger Hunts</a>
+      <a href="/treasure-hunts/">Treasure Hunts</a>
+      <a href="/escape-rooms/">Escape Rooms</a>
+    </nav>
+  </header>
+
+  <slot />
+
+  <footer>
+    <p>
+      © {new Date().getFullYear()} <strong>ThinkMystery</strong> · Printable mystery adventures for kids.<br />
+      <small>The only mystery games tested with real kids before we sell them.</small>
+    </p>
+  </footer>
+
+</body>
+</html>

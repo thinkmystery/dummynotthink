@@ -1,33 +1,427 @@
 ---
+// src/pages/index.astro
+// ThinkMystery homepage
 
+const siteUrl = 'https://thinkmystery.com'
+const canonicalUrl = siteUrl + '/'
+
+const seo_title = 'ThinkMystery — Printable Scavenger Hunts & Treasure Hunts for Kids'
+const meta_description = 'Printable mystery games for kids aged 4–9. Pirate scavenger hunts, treasure hunts with real maps, Halloween and Christmas adventures. 5-minute setup. Tested at real parties.'
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'ThinkMystery',
+  url: siteUrl,
+  description: meta_description,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${siteUrl}/scavenger-hunts/`,
+    'query-input': 'required name=search_term_string',
+  },
+}
+
+const products = [
+  {
+    emoji: '🏴‍☠️',
+    title: 'Pirate Scavenger Hunts',
+    subtitle: 'Ages 5–8 · Birthday & rainy day',
+    desc: 'The most-tested hunts in the range. From super-simple clues for non-readers to atmospheric deductions for 8-year-olds. 14 real birthday parties before launch.',
+    url: '/scavenger-hunts/pirate/',
+    price: 'from $6.99',
+    bg: '#FEF0E8',
+    border: '#F5C4A8',
+    tag: 'Most popular',
+  },
+  {
+    emoji: '🗺️',
+    title: 'Pirate Treasure Hunts',
+    subtitle: 'Ages 5–8 · Birthday',
+    desc: 'A real map the birthday child carries. A backstory letter. A chest reveal. The activity that ends up in the memory box.',
+    url: '/treasure-hunts/pirate/',
+    price: 'from $7.99',
+    bg: '#EAF1FB',
+    border: '#C0CEED',
+    tag: null,
+  },
+  {
+    emoji: '🦕',
+    title: 'Dinosaur Scavenger Hunts',
+    subtitle: 'Ages 5–7 · Birthday & rainy day',
+    desc: 'Proper dinosaur names in the clues. From "stomp to where the T-Rex rests" for 5-year-olds to palaeontology expedition language for 7-year-old dino experts.',
+    url: '/scavenger-hunts/dinosaur/',
+    price: 'from $6.99',
+    bg: '#EAF5EE',
+    border: '#B8D9C0',
+    tag: null,
+  },
+  {
+    emoji: '🎃',
+    title: 'Halloween Scavenger Hunt',
+    subtitle: 'Ages 7–9 · Birthday',
+    desc: 'The dark portal where humans disappear into the land of soap and water. Atmospheric clues that commit to the bit. Eight-year-olds describe it as "actually hard."',
+    url: '/scavenger-hunts/halloween-8-year-old-birthday/',
+    price: '$7.99',
+    bg: '#F4EDE0',
+    border: '#DDD3C0',
+    tag: null,
+  },
+  {
+    emoji: '🦄',
+    title: 'Unicorn Scavenger Hunt',
+    subtitle: 'Ages 6–8 · Birthday',
+    desc: 'Magical clues with a genuine deduction step. For 7-year-olds who want to feel like they\'re solving something real, not just following directions.',
+    url: '/scavenger-hunts/unicorn-7-year-old-birthday/',
+    price: '$7.99',
+    bg: '#F9F0FC',
+    border: '#D9C0ED',
+    tag: null,
+  },
+  {
+    emoji: '🎄',
+    title: 'Christmas Scavenger Hunt',
+    subtitle: 'Ages 5–7 · Holiday',
+    desc: 'Screen-free activity for the long Christmas holidays. Festive clues, indoor hiding spots, replayable across multiple rainy afternoons.',
+    url: '/scavenger-hunts/christmas-6-year-old-rainy-day/',
+    price: '$6.99',
+    bg: '#EAF5EE',
+    border: '#B8D9C0',
+    tag: null,
+  },
+]
+
+const stats = [
+  { value: '60+', label: 'real parties tested' },
+  { value: '16', label: 'hunts available' },
+  { value: '5 min', label: 'average setup time' },
+  { value: '30-day', label: 'money-back guarantee' },
+]
+
+const reviews = [
+  { text: 'I did nothing after reading the first clue. Literally nothing. Seven kids fully engaged for 30 minutes. I just watched.', name: 'Fiona M.', detail: 'Birthday party · 7 kids' },
+  { text: 'She carried that map like it was the most important thing in the world. She put it in her special box with her drawings. That\'s never happened with a party game before.', name: 'Emma D.', detail: 'Treasure hunt · 4 girls' },
+  { text: 'Eight-year-olds are impossible to impress. This genuinely impressed them. The "provisions in darkness" clue got complete silence for two minutes — then they got it and exploded.', name: 'Will K.', detail: 'Birthday party · 8 boys' },
+]
 ---
 
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dummy Think Mystery</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{seo_title}</title>
+  <meta name="description" content={meta_description} />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content={seo_title} />
+  <meta property="og:description" content={meta_description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Nunito Sans', sans-serif; background: #FFF9F2; color: #2C1F0F; }
 
-    <style>
-      body {
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        background: #0f172a;
-        color: white;
-        font-family: Arial, sans-serif;
-      }
+    /* NAV */
+    .site-nav { background: #2C1F0F; padding: 0 22px; height: 52px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .nav-brand { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.15rem; color: #F5C842; text-decoration: none; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+    .nav-links a { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.8rem; color: rgba(255,255,255,0.75); text-decoration: none; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { background: #E8703A; color: #fff !important; padding: 6px 16px; border-radius: 999px; font-size: 0.78rem !important; }
 
-      h1 {
-        font-size: 48px;
-        letter-spacing: 1px;
-      }
-    </style>
-  </head>
+    /* HERO */
+    .hero { padding: 4rem 22px 3.5rem; max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .hero-copy { max-width: 560px; }
+    .hero-eyebrow { font-family: 'Nunito', sans-serif; font-size: 0.8rem; font-weight: 800; color: #E8703A; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.75rem; }
+    .hero h1 { font-family: 'Nunito', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; letter-spacing: -0.05em; line-height: 1.0; color: #2C1F0F; margin-bottom: 1.25rem; }
+    .hero h1 em { color: #E8703A; font-style: normal; }
+    .hero-sub { font-size: 1.05rem; line-height: 1.8; color: #5C3D22; margin-bottom: 1.75rem; max-width: 480px; }
+    .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.4rem; background: #E8703A; color: #fff; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.95rem; padding: 13px 28px; border-radius: 999px; text-decoration: none; transition: background 0.15s; }
+    .btn-primary:hover { background: #D4602A; }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 0.4rem; background: #fff; color: #2C1F0F; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.9rem; padding: 12px 24px; border-radius: 999px; text-decoration: none; border: 1.5px solid #DDD3C0; }
+    .hero-guarantee { font-size: 0.78rem; color: #9E8060; font-family: 'Nunito', sans-serif; font-weight: 700; }
+    .hero-guarantee strong { color: #5C3D22; }
 
-  <body>
-    <h1>Dummy Think Mystery</h1>
-  </body>
+    /* HERO VISUAL */
+    .hero-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+    .hero-card { background: #fff; border: 1.5px solid #DDD3C0; border-radius: 18px; padding: 1.1rem; }
+    .hero-card-emoji { font-size: 1.75rem; margin-bottom: 0.5rem; }
+    .hero-card h3 { font-family: 'Nunito', sans-serif; font-size: 0.85rem; font-weight: 800; color: #2C1F0F; margin-bottom: 0.25rem; }
+    .hero-card p { font-size: 0.75rem; color: #6B4E2E; line-height: 1.5; }
+    .hero-card.accent { background: #FEF0E8; border-color: #F5C4A8; }
+
+    /* TRUST BAR */
+    .trust-bar { background: #2C1F0F; padding: 1.1rem 22px; }
+    .trust-bar-inner { max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .trust-item { display: flex; align-items: center; gap: 0.6rem; }
+    .trust-item strong { font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 900; color: #F5C842; }
+    .trust-item span { font-family: 'Nunito', sans-serif; font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.65); }
+
+    /* MAIN CONTENT */
+    .page-wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px 60px; }
+    .section { padding: 2.75rem 0; border-bottom: 1.5px solid #DDD3C0; }
+    .section:last-child { border-bottom: none; }
+    .section-header { margin-bottom: 1.5rem; }
+    .section-header h2 { font-family: 'Nunito', sans-serif; font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; }
+    .section-header p { font-size: 0.9rem; color: #6B4E2E; margin-top: 0.4rem; }
+
+    /* PRODUCT GRID */
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .product-card { border-radius: 20px; border: 1.5px solid #DDD3C0; padding: 1.4rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.5rem; transition: transform 0.15s, box-shadow 0.15s; position: relative; }
+    .product-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(92,61,34,0.1); }
+    .product-tag { position: absolute; top: -11px; left: 1.25rem; background: #E8703A; color: #fff; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.68rem; padding: 3px 12px; border-radius: 999px; }
+    .product-emoji { font-size: 2rem; margin-bottom: 0.15rem; }
+    .product-card h3 { font-family: 'Nunito', sans-serif; font-size: 0.97rem; font-weight: 900; color: #2C1F0F; }
+    .product-subtitle { font-family: 'Nunito', sans-serif; font-size: 0.72rem; font-weight: 700; color: #9E8060; text-transform: uppercase; letter-spacing: 0.3px; }
+    .product-card p { font-size: 0.855rem; color: #6B4E2E; line-height: 1.6; flex: 1; }
+    .product-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0.25rem; }
+    .product-price { font-family: 'Nunito', sans-serif; font-size: 0.85rem; font-weight: 900; color: #2C1F0F; }
+    .product-link { font-family: 'Nunito', sans-serif; font-size: 0.8rem; font-weight: 800; color: #E8703A; }
+
+    /* HOW IT WORKS */
+    .how-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
+    .how-step { text-align: center; padding: 0 0.75rem; position: relative; }
+    .how-step::after { content: '→'; position: absolute; right: -10px; top: 20px; font-size: 1rem; color: #DDD3C0; font-weight: 900; }
+    .how-step:last-child::after { display: none; }
+    .how-num { width: 40px; height: 40px; background: #E8703A; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 0.9rem; margin: 0 auto 0.75rem; }
+    .how-step h3 { font-family: 'Nunito', sans-serif; font-size: 0.82rem; font-weight: 800; color: #2C1F0F; margin-bottom: 0.25rem; }
+    .how-step p { font-size: 0.75rem; color: #6B4E2E; line-height: 1.55; }
+
+    /* DIFFERENCE */
+    .difference-block { background: linear-gradient(135deg, #FFF9F2, #F4EDE0); border-radius: 20px; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .diff-copy h2 { font-family: 'Nunito', sans-serif; font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 900; letter-spacing: -0.04em; margin-bottom: 1rem; }
+    .diff-copy p { font-size: 0.95rem; color: #5C3D22; line-height: 1.8; margin-bottom: 0.85rem; }
+    .diff-copy p:last-child { margin-bottom: 0; }
+    .diff-stats { display: flex; flex-direction: column; gap: 0.85rem; }
+    .diff-stat { background: #fff; border-radius: 14px; padding: 1rem 1.25rem; border: 1.5px solid #DDD3C0; }
+    .diff-stat strong { display: block; font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 900; color: #2C1F0F; margin-bottom: 0.2rem; }
+    .diff-stat span { font-size: 0.82rem; color: #6B4E2E; line-height: 1.5; }
+
+    /* REVIEWS */
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .review-card { background: #fff; border: 1.5px solid #DDD3C0; border-radius: 18px; padding: 1.4rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .review-stars { color: #F5C842; font-size: 0.9rem; letter-spacing: 1px; }
+    .review-card blockquote { font-size: 0.88rem; color: #2C1F0F; line-height: 1.7; flex: 1; font-style: italic; }
+    .review-attr { font-family: 'Nunito', sans-serif; font-size: 0.75rem; font-weight: 700; color: #9E8060; }
+
+    /* CTA BAND */
+    .cta-band { background: #2C1F0F; border-radius: 20px; padding: 2.5rem; text-align: center; }
+    .cta-band h2 { font-family: 'Nunito', sans-serif; font-size: clamp(1.3rem, 2.5vw, 2rem); font-weight: 900; letter-spacing: -0.04em; color: #fff; margin-bottom: 0.75rem; }
+    .cta-band p { font-size: 0.95rem; color: rgba(255,255,255,0.7); max-width: 560px; margin: 0 auto 1.75rem; line-height: 1.7; }
+    .cta-band .btn-primary { background: #F5C842; color: #2C1F0F; font-size: 1rem; padding: 14px 32px; }
+    .cta-band .btn-primary:hover { background: #E8B830; }
+    .cta-band-guarantee { font-family: 'Nunito', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 0.75rem; }
+
+    /* FOOTER */
+    .site-footer { background: #1A1208; padding: 2.5rem 22px; }
+    .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-brand { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1rem; color: #F5C842; }
+    .footer-tagline { font-size: 0.78rem; color: rgba(255,255,255,0.4); font-family: 'Nunito', sans-serif; margin-top: 0.25rem; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-family: 'Nunito', sans-serif; font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.5); text-decoration: none; }
+    .footer-links a:hover { color: rgba(255,255,255,0.8); }
+
+    @media (max-width: 1000px) {
+      .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 2.5rem 22px 2rem; }
+      .hero-visual { max-width: 480px; }
+      .how-grid { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+      .how-step::after { display: none; }
+      .difference-block { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+    @media (max-width: 760px) {
+      .product-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .trust-bar-inner { justify-content: center; gap: 1.5rem; }
+    }
+    @media (max-width: 560px) {
+      .product-grid { grid-template-columns: 1fr; }
+      .hero-visual { grid-template-columns: 1fr; }
+      .how-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .nav-links .nav-cta { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="/" class="nav-brand">ThinkMystery</a>
+  <div class="nav-links">
+    <a href="/scavenger-hunts/">Scavenger Hunts</a>
+    <a href="/treasure-hunts/">Treasure Hunts</a>
+    <a href="/scavenger-hunts/pirate/" class="nav-cta">Shop now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-copy">
+    <p class="hero-eyebrow">🏆 Tested at 60+ real parties before launch</p>
+    <h1>Mystery games kids actually <em>run themselves</em></h1>
+    <p class="hero-sub">Printable scavenger hunts and treasure hunts for ages 4–9. Print tonight. Hide in 5 minutes tomorrow. Read Clue 1 aloud — then watch. Parents who buy this always say the same thing: "I literally just watched."</p>
+    <div class="hero-actions">
+      <a href="/scavenger-hunts/" class="btn-primary">Browse scavenger hunts →</a>
+      <a href="/treasure-hunts/" class="btn-secondary">Treasure hunts 🗺️</a>
+    </div>
+    <p class="hero-guarantee"><strong>30-day money-back guarantee.</strong> If the hunt doesn't work at your party for any reason, full refund. No questions.</p>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card accent">
+      <div class="hero-card-emoji">🏴‍☠️</div>
+      <h3>Pirate Hunt · Age 6</h3>
+      <p>20–30 min · Indoor · Beginner reader</p>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-emoji">🗺️</div>
+      <h3>Treasure Hunt · Age 7</h3>
+      <p>30–40 min · Real map · Child-led</p>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-emoji">🦕</div>
+      <h3>Dino Hunt · Age 5</h3>
+      <p>15–25 min · Non-readers welcome</p>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-emoji">🎃</div>
+      <h3>Halloween Hunt · Age 8</h3>
+      <p>30–40 min · Atmospheric clues</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    {stats.map(stat => (
+      <div class="trust-item">
+        <strong>{stat.value}</strong>
+        <span>{stat.label}</span>
+      </div>
+    ))}
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- PRODUCTS -->
+  <section class="section">
+    <div class="section-header">
+      <h2>All printable games</h2>
+      <p>Each hunt is tested at multiple real parties — the version number tells you how many rounds it's been through.</p>
+    </div>
+    <div class="product-grid">
+      {products.map(product => (
+        <a href={product.url} class="product-card" style={`background: ${product.bg}; border-color: ${product.border};`}>
+          {product.tag && <div class="product-tag">{product.tag}</div>}
+          <div class="product-emoji">{product.emoji}</div>
+          <h3>{product.title}</h3>
+          <p class="product-subtitle">{product.subtitle}</p>
+          <p>{product.desc}</p>
+          <div class="product-footer">
+            <span class="product-price">{product.price}</span>
+            <span class="product-link">See hunt →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="section-header">
+      <h2>How it works</h2>
+    </div>
+    <div class="how-grid">
+      {[
+        { title: 'Download', body: 'Instant. High-res PDF. US Letter & A4 included.' },
+        { title: 'Print', body: 'Any home printer. Standard paper. Night before is fine.' },
+        { title: 'Hide in 5 min', body: 'Location guide included. Every clue has a spot.' },
+        { title: 'Read Clue 1', body: 'That\'s your job done. In your best pirate voice.' },
+        { title: 'Watch', body: 'The kids run it themselves. You\'re the audience now.' },
+      ].map((step, i) => (
+        <div class="how-step">
+          <div class="how-num">{i + 1}</div>
+          <h3>{step.title}</h3>
+          <p>{step.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- THE DIFFERENCE -->
+  <section class="section">
+    <div class="difference-block">
+      <div class="diff-copy">
+        <h2>Tested at real parties — not designed in a spreadsheet</h2>
+        <p>Every hunt in the ThinkMystery range is tested at multiple real birthday parties before it goes on sale. We tracked which clues caused stalling, which hiding spots didn't exist in every home, and which vocabulary tripped up early readers.</p>
+        <p>The version number on each product tells you exactly how many rounds of real-world testing it's been through. The pirate age-6 hunt is on version 6. That means 6 rounds of testing and refinement before you buy it.</p>
+        <p>The "only mystery games tested with real kids before we sell them" isn't marketing language. It's the product development process.</p>
+      </div>
+      <div class="diff-stats">
+        {[
+          { value: '11 words per clue', desc: 'Average length in the age-5 range. Designed for one-listen comprehension.' },
+          { value: '14 homes tested', desc: 'Every hiding spot tested across 14 different homes before publishing.' },
+          { value: 'Version 6', desc: 'The pirate age-6 hunt — 6 rounds of real-party testing before launch.' },
+          { value: '4-minute setup', desc: 'Fastest real-world setup time reported by parents using the hunt.' },
+        ].map(item => (
+          <div class="diff-stat">
+            <strong>{item.value}</strong>
+            <span>{item.desc}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section">
+    <div class="section-header">
+      <h2>What parents say</h2>
+    </div>
+    <div class="reviews-grid">
+      {reviews.map(review => (
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <blockquote>"{review.text}"</blockquote>
+          <p class="review-attr">{review.name} · {review.detail}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="section">
+    <div class="cta-band">
+      <h2>Party this weekend?</h2>
+      <p>Download tonight. Print tomorrow morning. The hunt is hidden and ready before the first guest arrives. Every product includes a 30-day money-back guarantee.</p>
+      <a href="/scavenger-hunts/pirate/" class="btn-primary">Start with pirate scavenger hunts →</a>
+      <p class="cta-band-guarantee">30-day guarantee · Instant download · Any home printer</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <p class="footer-brand">ThinkMystery</p>
+      <p class="footer-tagline">The only mystery games tested with real kids before we sell them.</p>
+    </div>
+    <div class="footer-links">
+      <a href="/scavenger-hunts/">Scavenger Hunts</a>
+      <a href="/treasure-hunts/">Treasure Hunts</a>
+      <a href="/scavenger-hunts/pirate/">Pirate Hunts</a>
+      <a href="/scavenger-hunts/dinosaur/">Dino Hunts</a>
+    </div>
+  </div>
+</footer>
+
+</body>
 </html>

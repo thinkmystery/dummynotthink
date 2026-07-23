@@ -1,0 +1,25 @@
+---
+const { diff_reading, diff_setup, diff_energy, diff_puzzle, diff_chaos, diff_summary } = Astro.props
+const ratings = [
+  { label: 'Reading Difficulty', value: diff_reading },
+  { label: 'Parent Setup', value: diff_setup },
+  { label: 'Energy Level', value: diff_energy },
+  { label: 'Puzzle Complexity', value: diff_puzzle },
+  { label: 'Chaos Risk', value: diff_chaos },
+]
+---
+<section class="section ratings">
+  <h2>Difficulty Ratings</h2>
+  <div class="rating-list">
+    {ratings.map(r => (
+      <div>
+        <span>{r.label}</span>
+        <div class="diff-dots" aria-label={`${r.value} out of 5`}>
+          {[1,2,3,4,5].map(n => <span class={`diff-dot${n <= r.value ? ' on' : ''}`}></span>)}
+        </div>
+        <strong>{r.value} / 5</strong>
+      </div>
+    ))}
+  </div>
+  <p class="diff-summary">{diff_summary}</p>
+</section>

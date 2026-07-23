@@ -1,0 +1,19 @@
+---
+const { related, age_value, theme, occasion } = Astro.props
+const occasionLabel = occasion.replace('-', ' ')
+---
+<section class="section">
+  <h2>What Parents Buy Next</h2>
+  <p class="section-sub">More for {age_value}-year-olds · More {theme} hunts · More {occasionLabel} games</p>
+  <div class="related-grid">
+    {related.map(item => (
+      <a href={item.url} style={`background:${item.bg}`}>
+        <span class="related-emoji">{item.emoji}</span>
+        <span class="related-ascend">{item.ascend}</span>
+        <strong>{item.label}</strong>
+        <span>{item.desc}</span>
+        <span class="related-price">{item.price}</span>
+      </a>
+    ))}
+  </div>
+</section>

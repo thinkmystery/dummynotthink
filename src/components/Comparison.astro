@@ -1,0 +1,22 @@
+---
+const { product_type } = Astro.props
+const cards = [
+  { featured: product_type === 'scavenger-hunt', tag: 'This product', for: 'Choose this if...', title: 'Scavenger Hunt', body: 'Fast setup, easy clues, lots of movement, works indoors — no theme room needed.' },
+  { featured: product_type === 'treasure-hunt', for: 'Choose this if...', title: 'Treasure Hunt', body: 'You want more story, a real map, and a stronger final treasure moment.' },
+  { featured: product_type === 'escape-room', for: 'Choose this if...', title: 'Escape Room Kit', body: 'Deeper puzzles, longer gameplay for older kids (8+) who enjoy cracking codes.' },
+  { featured: false, for: 'Why not just...', title: 'Write Your Own Clues', body: 'Parents who write their own spend 2-3 hours and still end up with clues that are too hard, too easy, or lead to spots they forgot to stock. For $7.99, this solves all of that.' },
+]
+---
+<section class="section comparison">
+  <h2>Scavenger Hunt vs. Your Other Options</h2>
+  <div class="comparison-grid comparison-grid-4">
+    {cards.map(card => (
+      <div class={card.featured ? 'comparison-featured' : ''}>
+        {card.featured && <div class="featured-tag">{card.tag}</div>}
+        <p class="compare-for">{card.for}</p>
+        <h3>{card.title}</h3>
+        <p>{card.body}</p>
+      </div>
+    ))}
+  </div>
+</section>

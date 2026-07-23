@@ -1,0 +1,73 @@
+---
+const title = "Sales Page Digital";
+---
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{title}</title><meta name="robots" content="noindex,nofollow"/><style>
+:root{--green:#123522;--green2:#1d4a30;--ink:#111;--cream:#f7f1e6;--white:#fff;--gold:#b8892a;--muted:#555;--line:#d8cfbf}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:500;margin:0 0 18px;color:var(--ink)}
+h1{font-size:clamp(44px,7vw,78px);line-height:.96;letter-spacing:-.045em}
+h2{font-size:clamp(32px,4.5vw,56px);line-height:1.05;letter-spacing:-.035em}
+h3{font-size:24px}
+p{font-size:18px;color:var(--muted);margin:0 0 16px}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.nav{background:var(--green);color:white;padding:14px 0;border-bottom:4px solid var(--gold)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px}
+.logo{font-weight:800;letter-spacing:.04em;color:white}
+.hero{background:var(--green);color:white;padding:80px 0}
+.hero h1{color:white}
+.hero p{color:#e7dfd0;font-size:22px;max-width:780px}
+.gold{color:var(--gold)}
+.btn{display:inline-block;text-decoration:none;border-radius:999px;padding:14px 22px;background:var(--gold);color:var(--ink);font-weight:800;margin-top:18px}
+.btn.secondary{background:white;color:var(--green)}
+section{padding:68px 0;border-bottom:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+.eyebrow{color:var(--gold);font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px}
+.dark{background:var(--ink);color:white}
+.dark h1,.dark h2{color:white}
+.dark > .wrap > p{color:#ddd}
+.card{
+  background:#fff !important;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:26px;
+  box-shadow:0 8px 22px rgba(0,0,0,.06);
+  color:#111 !important;
+}
+.card h1,.card h2,.card h3,.dark .card h1,.dark .card h2,.dark .card h3{
+  color:#111 !important;
+}
+.card p,.card span,.card div,.card li,
+.dark .card p,.dark .card span,.dark .card div,.dark .card li{
+  color:#444 !important;
+}
+.mock{
+  background:#fff !important;
+  border-radius:24px;
+  border:1px solid var(--line);
+  padding:28px;
+  box-shadow:0 24px 60px rgba(0,0,0,.15);
+  color:#111 !important;
+}
+.mock h1,.mock h2,.mock h3,.mock .mock-title{color:var(--green) !important}
+.mock p,.mock div{color:#444}
+.mock-title{font-family:Georgia,"Times New Roman",serif;font-size:30px;color:var(--green);margin-bottom:12px}
+.line{height:10px;background:#ddd;border-radius:10px;margin:10px 0}
+.price{font-family:Georgia,"Times New Roman",serif;font-size:42px;color:var(--gold)!important;line-height:1}
+.table{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:white;margin-top:24px}
+.row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.cell{padding:18px 20px;color:#111;background:white}
+.value{text-align:right;color:var(--gold)!important;font-weight:800}
+@media(max-width:850px){.grid,.three{grid-template-columns:1fr}.hero p{font-size:19px}.wrap{padding:0 18px}.nav .wrap{display:block}.row{grid-template-columns:1fr}.value{text-align:left;padding-top:0}}
+</style></head>
+<body>
+<div class="nav"><div class="wrap"><div class="logo">ThinkMystery Digital</div><div>V2 sales page mockup</div></div></div>
+<header class="hero"><div class="wrap grid"><div><div class="eyebrow">Digital Club</div><h1>Your kid is bored. You’re about to hand over the tablet again.</h1><p>ThinkMystery sends a new screen-free adventure every month — age-matched, seasonal, ready to print in 3 minutes, and designed to make the next rainy day, restaurant wait, road trip, or Saturday morning easier.</p><a class="btn" href="#pricing">Start the Club</a></div><div class="mock"><div class="mock-title">Emma’s Adventure Hub</div><p>October · Age 7</p><div class="card"><h3>The Haunted Library Mystery</h3><p>45 minutes · detective adventure</p></div><div class="card" style="margin-top:12px"><h3>Pumpkin Escape Room</h3><p>30 minutes · solo or group</p></div><div class="card" style="margin-top:12px"><h3>Detective Badge Challenge</h3><p>20 minutes · brain training</p></div></div></div></header>
+<section><div class="wrap"><div class="eyebrow">Post-Purchase Escalation</div><h2>You found something they actually did. Now make it automatic.</h2><p style="max-width:760px">The first printable solved one moment. The Digital Club solves the recurring problem: fresh, low-prep, screen-free activities arriving before the next boredom crisis.</p><div class="three"><div class="card"><h3>New adventures monthly</h3><p>Seasonal mystery packs, escape rooms, detective challenges, travel activities, and rainy-day kits.</p></div><div class="card"><h3>Age-matched</h3><p>Difficulty, vocabulary, length, and theme change as the child grows.</p></div><div class="card"><h3>Print in 3 minutes</h3><p>No apps, no prep spiral, no craft-store trip. Download, print, play.</p></div></div></div></section>
+<section class="dark"><div class="wrap"><div class="eyebrow">What Changes</div><h2>Before: one activity. After: a screen-free system.</h2><div class="three"><div class="card"><h3>Before</h3><p>Scramble when boredom hits. Search Etsy again. Hope the product is good.</p></div><div class="card"><h3>After</h3><p>New activities are waiting. The household has an always-ready alternative.</p></div><div class="card"><h3>Why it retains</h3><p>The parent is not just buying content. They are buying the feeling of having a plan.</p></div></div></div></section>
+<section id="pricing"><div class="wrap"><div class="eyebrow">Pricing</div><h2>Less than one movie ticket. Every month.</h2><div class="grid"><div class="card"><h3>Monthly</h3><div class="price">$15/mo</div><p>Full library, monthly drops, seasonal campaigns, cancel anytime.</p><a class="btn secondary" href="#">Start digital</a></div><div class="card"><h3>Annual</h3><div class="price">$149/yr</div><p>Two months free, full year of screen-free adventures, priority access to new releases.</p><a class="btn" href="#">Start annual</a></div></div></div></section>
+<section><div class="wrap"><a href="/investors/">← Back to investor brief</a></div></section>
+</body></html>

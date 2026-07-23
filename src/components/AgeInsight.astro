@@ -1,0 +1,11 @@
+---
+// src/components/AgeInsight.astro
+const { age_value, age_insight_title, age_insight_body } = Astro.props
+---
+
+<section class="section age-insight-section">
+  <h2>{age_insight_title}</h2>
+  <div class="age-insight-body">
+    <p>{age_insight_body}</p>
+  </div>
+</section>
