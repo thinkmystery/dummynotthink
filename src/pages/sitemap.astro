@@ -1,0 +1,166 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro'
+
+const groups = [
+  {
+    title: 'Main Pages',
+    links: [
+      { href: '/', label: 'Homepage' },
+      { href: '/scavenger-hunts/', label: 'Scavenger Hunts (hub)' },
+      { href: '/treasure-hunts/', label: 'Treasure Hunts (hub)' },
+      { href: '/escape-rooms/', label: 'Escape Rooms' },
+      { href: '/guides/', label: 'Parent Guides (hub)' },
+      { href: '/investors/', label: 'Investors' },
+      { href: '/sales-page-digital/', label: 'Sales Page — Digital' },
+      { href: '/sales-page-premium/', label: 'Sales Page — Premium' },
+    ],
+  },
+  {
+    title: 'Scavenger Hunts — Theme Hubs',
+    links: [
+      { href: '/scavenger-hunts/pirate/', label: 'Pirate Scavenger Hunts' },
+      { href: '/scavenger-hunts/dinosaur/', label: 'Dinosaur Scavenger Hunts' },
+      { href: '/scavenger-hunts/birthday/', label: 'Birthday Scavenger Hunts' },
+    ],
+  },
+  {
+    title: 'Scavenger Hunts — Product Pages',
+    links: [
+      { href: '/scavenger-hunts/pirate-5-year-old-birthday/', label: 'Pirate · Age 5 · Birthday' },
+      { href: '/scavenger-hunts/pirate-6-year-old-birthday/', label: 'Pirate · Age 6 · Birthday' },
+      { href: '/scavenger-hunts/pirate-6-year-old-rainy-day/', label: 'Pirate · Age 6 · Rainy Day' },
+      { href: '/scavenger-hunts/pirate-7-year-old-birthday/', label: 'Pirate · Age 7 · Birthday' },
+      { href: '/scavenger-hunts/pirate-8-year-old-birthday/', label: 'Pirate · Age 8 · Birthday' },
+      { href: '/scavenger-hunts/dinosaur-5-year-old-birthday/', label: 'Dinosaur · Age 5 · Birthday' },
+      { href: '/scavenger-hunts/dinosaur-6-year-old-birthday/', label: 'Dinosaur · Age 6 · Birthday' },
+      { href: '/scavenger-hunts/dinosaur-6-year-old-rainy-day/', label: 'Dinosaur · Age 6 · Rainy Day' },
+      { href: '/scavenger-hunts/dinosaur-7-year-old-birthday/', label: 'Dinosaur · Age 7 · Birthday' },
+      { href: '/scavenger-hunts/unicorn-7-year-old-birthday/', label: 'Unicorn · Age 7 · Birthday' },
+      { href: '/scavenger-hunts/halloween-8-year-old-birthday/', label: 'Halloween · Age 8 · Birthday' },
+      { href: '/scavenger-hunts/christmas-6-year-old-rainy-day/', label: 'Christmas · Age 6 · Rainy Day' },
+    ],
+  },
+  {
+    title: 'Treasure Hunts',
+    links: [
+      { href: '/treasure-hunts/pirate/', label: 'Pirate Treasure Hunts (hub)' },
+      { href: '/treasure-hunts/dinosaur/', label: 'Dinosaur Treasure Hunts (hub)' },
+      { href: '/treasure-hunts/birthday/', label: 'Birthday Treasure Hunts (hub)' },
+      { href: '/treasure-hunts/pirate-5-year-old-birthday/', label: 'Pirate Treasure · Age 5 · Birthday' },
+      { href: '/treasure-hunts/pirate-6-year-old-birthday/', label: 'Pirate Treasure · Age 6 · Birthday' },
+      { href: '/treasure-hunts/pirate-7-year-old-birthday/', label: 'Pirate Treasure · Age 7 · Birthday' },
+      { href: '/treasure-hunts/pirate-8-year-old-birthday/', label: 'Pirate Treasure · Age 8 · Birthday' },
+    ],
+  },
+  {
+    title: 'Parent Guides (Pillar Articles)',
+    links: [
+      { href: '/guides/scavenger-hunt-difficulty-by-age/', label: "The Age-by-Age Guide to Kids' Scavenger Hunt Difficulty" },
+      { href: '/guides/birthday-party-no-planned-games-mistake/', label: 'How to Run a Birthday Party With Zero Planned Games' },
+      { href: '/guides/indoor-vs-outdoor-party-games-small-homes-apartments/', label: 'Indoor vs. Outdoor Party Games' },
+      { href: '/guides/screen-free-birthday-party-planning-guide/', label: 'The Screen-Free Birthday Party' },
+      { href: '/guides/kids-attention-span-party-planning-research/', label: "Kids' Attention Spans at Parties" },
+      { href: '/guides/printable-party-games-buy-vs-diy-guide/', label: 'Printable Party Games: Buy vs. DIY' },
+      { href: '/guides/rainy-day-activities-that-actually-tire-kids-out/', label: 'Rainy Day Activities That Actually Tire Kids Out' },
+      { href: '/guides/theme-kids-party-on-a-budget/', label: 'How to Theme a Kids’ Party on a Budget' },
+    ],
+  },
+  {
+    title: 'Unplugged Childhood Network',
+    links: [
+      { href: '/unplugged-childhood/', label: 'UCN Directory (hub)' },
+      { href: '/unplugged-childhood/cool-mom-picks.html', label: 'Member Profile — Cool Mom Picks' },
+      { href: '/unplugged-childhood/the-barefoot-family.html', label: 'Member Profile — The Barefoot Family' },
+    ],
+  },
+  {
+    title: 'Legacy Static Mockups (pre-Astro, kept for reference)',
+    links: [
+      { href: '/scavenger-hunts.html', label: 'scavenger-hunts.html (static)' },
+      { href: '/birthday-scavenger-hunts.html', label: 'birthday-scavenger-hunts.html (static)' },
+      { href: '/indoor-scavenger-hunts.html', label: 'indoor-scavenger-hunts.html (static)' },
+      { href: '/pirate-treasure-hunts.html', label: 'pirate-treasure-hunts.html (static)' },
+      { href: '/index-old.html', label: 'index-old.html (static)' },
+    ],
+  },
+]
+
+const totalCount = groups.reduce((sum, g) => sum + g.links.length, 0)
+---
+
+<SiteLayout
+  seo_title="Sitemap — dummynotthink"
+  meta_description="Full clickable list of every page on the dummynotthink staging site."
+  canonical_url="https://dummynotthink.vercel.app/sitemap/"
+  is_staging={false}
+  silo="scavenger"
+>
+  <main>
+    <section class="hero-simple">
+      <p class="eyebrow">Staging Site</p>
+      <h1>Sitemap</h1>
+      <p class="lede">Every page currently live on dummynotthink.vercel.app — {totalCount} links, grouped by section.</p>
+    </section>
+
+    {groups.map(group => (
+      <section class="section">
+        <h2>{group.title}</h2>
+        <ul class="link-list">
+          {group.links.map(link => (
+            <li><a href={link.href}>{link.label}</a><span class="path">{link.href}</span></li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </main>
+</SiteLayout>
+
+<style>
+  .hero-simple {
+    padding: 44px 0 12px;
+  }
+  .lede {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-top: 12px;
+  }
+  .link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 4px;
+  }
+  .link-list li {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 11px 4px;
+    border-bottom: 1px solid var(--border);
+  }
+  .link-list li:last-child {
+    border-bottom: none;
+  }
+  .link-list a {
+    font-weight: 750;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+  .link-list a:hover {
+    color: #E8703A;
+    text-decoration: underline;
+  }
+  .path {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    font-family: monospace;
+  }
+  @media (max-width: 600px) {
+    .link-list li {
+      flex-direction: column;
+      gap: 2px;
+    }
+  }
+</style>
