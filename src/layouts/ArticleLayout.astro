@@ -1,0 +1,207 @@
+---
+import SiteLayout from './SiteLayout.astro'
+
+const { frontmatter } = Astro.props
+const siteUrl = 'https://dummynotthink.vercel.app'
+const canonicalUrl = `${siteUrl}/guides/${frontmatter.slug}/`
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: frontmatter.title,
+    description: frontmatter.description,
+    url: canonicalUrl,
+    author: { '@type': 'Organization', name: 'ThinkMystery' },
+    publisher: { '@type': 'Organization', name: 'ThinkMystery' },
+  },
+]
+---
+
+<SiteLayout
+  seo_title={frontmatter.seo_title || frontmatter.title}
+  meta_description={frontmatter.description}
+  canonical_url={canonicalUrl}
+  is_staging={false}
+  silo="scavenger"
+  structured_data={structuredData}
+>
+  <main>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span>›</span>
+      <a href="/guides/">Guides</a><span>›</span>
+      <span>{frontmatter.title}</span>
+    </nav>
+
+    <article class="article-shell">
+      <header class="article-header">
+        <p class="eyebrow">Parent Guide</p>
+        <h1>{frontmatter.title}</h1>
+        <p class="article-dek">{frontmatter.description}</p>
+      </header>
+
+      <div class="article-body">
+        <slot />
+      </div>
+
+      <div class="article-footer-cta">
+        <p class="eyebrow">Keep exploring</p>
+        <h2>More ThinkMystery guides</h2>
+        <a class="button primary large" href="/guides/">Browse all guides →</a>
+      </div>
+    </article>
+  </main>
+</SiteLayout>
+
+<style is:global>
+  .article-shell {
+    max-width: 760px;
+    margin: 18px auto 0;
+  }
+
+  .article-header {
+    padding: 8px 0 30px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 38px;
+  }
+
+  .article-header h1 {
+    max-width: 100%;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+  }
+
+  .article-dek {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-top: 16px;
+    max-width: 640px;
+  }
+
+  .article-body {
+    font-size: 1.08rem;
+    line-height: 1.75;
+    color: var(--text-primary);
+  }
+
+  .article-body > * + * {
+    margin-top: 1.35em;
+  }
+
+  .article-body h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-top: 2.2em;
+    padding-top: 0.2em;
+  }
+
+  .article-body h3 {
+    font-size: 1.3rem;
+    margin-top: 1.8em;
+    color: var(--text-primary);
+  }
+
+  .article-body p {
+    color: var(--text-primary);
+  }
+
+  .article-body p strong,
+  .article-body li strong {
+    color: #5C3D22;
+  }
+
+  .article-body a {
+    color: #E8703A;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .article-body ul,
+  .article-body ol {
+    padding-left: 1.4em;
+  }
+
+  .article-body li {
+    margin: 0.5em 0;
+    color: var(--text-primary);
+  }
+
+  .article-body li p {
+    margin: 0;
+  }
+
+  .article-body blockquote {
+    margin: 0;
+    background: #FFF9F2;
+    border-left: 4px solid #E8703A;
+    border-radius: 0 14px 14px 0;
+    padding: 1rem 1.4rem;
+    font-style: italic;
+    color: #5C3D22;
+  }
+
+  .article-body blockquote p {
+    color: #5C3D22 !important;
+  }
+
+  .article-body table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-badge);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    font-size: 0.95rem;
+  }
+
+  .article-body th,
+  .article-body td {
+    text-align: left;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .article-body th {
+    background: #F4EDE0;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    color: #5C3D22;
+  }
+
+  .article-body tr:last-child td {
+    border-bottom: none;
+  }
+
+  .article-body code {
+    background: #F4EDE0;
+    border-radius: 6px;
+    padding: 2px 6px;
+    font-size: 0.9em;
+  }
+
+  .article-body hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.5em 0;
+  }
+
+  .article-footer-cta {
+    text-align: center;
+    background: var(--bg-cta);
+    color: var(--text-on-dark);
+    border-radius: var(--radius-xl);
+    padding: 48px 28px;
+    margin: 60px 0 20px;
+    box-shadow: var(--shadow-card);
+  }
+
+  .article-footer-cta h2 {
+    color: var(--text-on-dark);
+    margin: 8px 0 22px;
+  }
+
+  @media (max-width: 560px) {
+    .article-body {
+      font-size: 1rem;
+    }
+  }
+</style>

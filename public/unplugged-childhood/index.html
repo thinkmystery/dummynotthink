@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unplugged Childhood</title>
+  <meta name="description" content="A network celebrating the publishers, educators, creators, and authors helping children live active, curious, and fully engaged lives." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#1a1209;--ink2:#3d2f1a;--muted:#8a7560;--paper:#faf7f2;--cream:#f2ece0;--warm:#e8dece;--green:#2d5a3d;--green-light:#e8f0ea;--amber:#c8762a;--amber-light:#fdf0e0;--line:rgba(26,18,9,.1);--line-strong:rgba(26,18,9,.18);--shadow:0 8px 32px rgba(26,18,9,.1);--shadow-lg:0 24px 72px rgba(26,18,9,.14)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);font-size:17px;line-height:1.6}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.4}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1160px,92vw);margin:0 auto}
+
+    header{position:sticky;top:0;z-index:100;background:rgba(250,247,242,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+    .nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-mark{width:38px;height:38px;border-radius:10px;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .brand-mark svg{width:20px;height:20px}
+    .brand-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;letter-spacing:-.01em;line-height:1}
+    nav{display:flex;gap:28px;font-size:.9rem;font-weight:500;color:var(--ink2)}
+    nav a{transition:color .2s}
+    nav a:hover{color:var(--green)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:6px;padding:10px 20px;font-weight:600;font-size:.9rem;border:1.5px solid var(--line-strong);background:transparent;cursor:pointer;transition:all .2s;color:var(--ink)}
+    .btn:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+    .btn.primary{background:var(--green);color:white;border-color:var(--green)}
+    .btn.primary:hover{background:#224530;border-color:#224530}
+    .btn.white{background:white;color:var(--ink);border-color:white}
+    .btn.white:hover{background:var(--paper)}
+
+    /* HERO */
+    .hero{padding:80px 0 0;border-bottom:1px solid var(--line);overflow:hidden}
+    .hero-inner{display:grid;grid-template-columns:1fr 1px 420px;gap:0;align-items:start}
+    .hero-left{padding-right:60px;padding-bottom:72px}
+    .hero-divider{background:var(--line-strong);align-self:stretch}
+    .hero-right{background:var(--cream);padding:36px 32px;align-self:stretch}
+    h1{font-family:'Playfair Display',serif;font-size:clamp(3.4rem,7vw,6.2rem);line-height:.95;letter-spacing:-.03em;font-weight:900;margin-bottom:28px}
+    h1 em{font-style:italic;color:var(--green)}
+    .hero-lead{font-size:1.2rem;line-height:1.58;color:var(--ink2);max-width:580px;margin-bottom:40px;font-weight:300}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px}
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);padding-top:28px}
+    .stat-item{padding-right:28px}
+    .stat-item+.stat-item{border-left:1px solid var(--line);padding-left:28px}
+    .stat-num{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:700;line-height:1;letter-spacing:-.03em;margin-bottom:6px}
+    .stat-label{font-size:.82rem;color:var(--muted);font-weight:500;letter-spacing:.02em}
+    .hero-right-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+    .member-card-small{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:12px;display:flex;align-items:center;gap:14px;transition:transform .2s,box-shadow .2s}
+    .member-card-small:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .member-avatar{width:46px;height:46px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;color:white;flex-shrink:0}
+    .member-avatar.amber{background:var(--amber)}
+    .member-avatar.blue{background:#2d4a6e}
+    .member-avatar.circle{border-radius:50%;background:linear-gradient(135deg,#f09433,#cc2366)}
+    .member-card-name{font-weight:600;font-size:.95rem;margin-bottom:3px}
+    .member-card-meta{font-size:.8rem;color:var(--muted)}
+    .founding-badge{margin-left:auto;flex-shrink:0;background:var(--green-light);color:var(--green);font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border-radius:4px}
+    .more-members{text-align:center;padding-top:8px;font-size:.85rem;font-weight:500}
+
+    /* SECTIONS */
+    section{padding:88px 0}
+    .section-header{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:52px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+    h2{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.8rem);line-height:.96;letter-spacing:-.025em;font-weight:700}
+    h2 em{font-style:italic;color:var(--green)}
+    .section-desc{font-size:1.05rem;color:var(--ink2);line-height:1.65;font-weight:300}
+
+    /* MISSION */
+    .mission-bg{background:var(--ink);color:var(--paper)}
+    .mission-bg .section-header{border-color:rgba(250,247,242,.12)}
+    .mission-bg h2{color:var(--paper)}
+    .mission-bg .section-desc{color:rgba(250,247,242,.65)}
+    .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+    .pillar{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:36px 32px;transition:background .2s}
+    .pillar:hover{background:rgba(255,255,255,.07)}
+    .pillar-num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:rgba(250,247,242,.1);line-height:1;margin-bottom:20px}
+    .pillar h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:14px;color:var(--paper)}
+    .pillar p{font-size:.95rem;color:rgba(250,247,242,.6);line-height:1.65;font-weight:300}
+
+    /* MEMBERS */
+    .members-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .member-card{background:white;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+    .member-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+    .member-card-top{height:100px;background:var(--green-light);padding:20px;display:flex;justify-content:space-between;align-items:flex-start}
+    .member-card-top.amber-bg{background:var(--amber-light)}
+    .member-card-top.warm-bg{background:var(--warm)}
+    .member-logo{width:52px;height:52px;border-radius:10px;background:var(--green);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:white}
+    .member-logo.amber{background:var(--amber)}
+    .member-logo.ink{background:var(--ink)}
+    .member-number{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:rgba(26,18,9,.07);line-height:1}
+    .member-card-body{padding:22px}
+    .member-card-body h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+    .member-card-body p{font-size:.88rem;color:var(--muted);line-height:1.55;margin-bottom:18px}
+    .member-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+    .tag{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:4px 9px;border-radius:4px;background:var(--cream);color:var(--ink2);border:1px solid var(--line)}
+
+    /* REPORTS */
+    .reports-layout{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+    .report-main{background:var(--ink);color:var(--paper);border-radius:14px;padding:42px;display:flex;flex-direction:column;justify-content:space-between;min-height:380px}
+    .report-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+    .report-main h3{font-family:'Playfair Display',serif;font-size:2.4rem;line-height:.96;font-weight:700;letter-spacing:-.02em;margin-bottom:16px}
+    .report-main p{color:rgba(250,247,242,.62);font-size:.98rem;line-height:1.6;font-weight:300;max-width:480px}
+    .report-side{display:flex;flex-direction:column;gap:20px}
+    .report-small{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:28px;flex:1}
+    .report-small h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:10px}
+    .report-small p{font-size:.88rem;color:var(--muted);line-height:1.6;font-weight:300}
+
+    /* CTA */
+    .cta-section{background:var(--green);color:white;border-radius:16px;padding:64px;display:flex;align-items:center;justify-content:space-between;gap:40px;margin-bottom:88px}
+    .cta-section h2{font-family:'Playfair Display',serif;color:white;font-size:clamp(2rem,3.5vw,3rem)}
+    .cta-section p{color:rgba(255,255,255,.72);font-size:1rem;line-height:1.65;max-width:560px;font-weight:300;margin-top:12px}
+
+    footer{border-top:1px solid var(--line);padding:36px 0}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;font-size:.85rem;color:var(--muted)}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .fade-up{animation:fadeUp .7s ease both}
+    .fade-up-1{animation-delay:.1s}.fade-up-2{animation-delay:.2s}.fade-up-3{animation-delay:.3s}.fade-up-4{animation-delay:.4s}
+
+    @media(max-width:900px){
+      nav{display:none}
+      .hero-inner{grid-template-columns:1fr}
+      .hero-divider{display:none}
+      .hero-right{padding:32px}
+      .hero-left{padding-right:0;padding-bottom:48px}
+      .stat-row{grid-template-columns:1fr 1fr}
+      .section-header{grid-template-columns:1fr;gap:20px}
+      .pillars,.members-grid{grid-template-columns:1fr}
+      .reports-layout{grid-template-columns:1fr}
+      .cta-section{flex-direction:column;padding:40px}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">
+      <div class="brand-mark">
+        <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="white" stroke-width="1.5"/><path d="M4 17c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="brand-name">Unplugged Childhood</div>
+    </a>
+    <nav>
+      <a href="#mission">Mission</a>
+      <a href="/unplugged-childhood/">Members</a>
+      <a href="#reports">Reports</a>
+    </nav>
+    <a class="btn primary" href="#join">Nominate Someone</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-left">
+        <h1 class="fade-up">Active kids.<br><em>Engaged</em> childhoods.</h1>
+        <p class="hero-lead fade-up fade-up-1">A network celebrating the publishers, educators, creators, and authors helping children live curious, active, and fully engaged lives — in the real world.</p>
+        <div class="hero-actions fade-up fade-up-2">
+          <a class="btn primary" href="/unplugged-childhood/">Meet the Members</a>
+          <a class="btn" href="#reports">2026 Report</a>
+        </div>
+        <div class="stat-row fade-up fade-up-3">
+          <div class="stat-item">
+            <div class="stat-num">1,547</div>
+            <div class="stat-label">Resources researched</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">100</div>
+            <div class="stat-label">Founding Members</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">17</div>
+            <div class="stat-label">Countries represented</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-divider"></div>
+
+      <div class="hero-right fade-up fade-up-2">
+        <div class="hero-right-label">Founding Members</div>
+        <a class="member-card-small" href="/unplugged-childhood/cool-mom-picks.html">
+          <div class="member-avatar">CMP</div>
+          <div><div class="member-card-name">Cool Mom Picks</div><div class="member-card-meta">Publisher · United States</div></div>
+          <span class="founding-badge">#01</span>
+        </a>
+        <a class="member-card-small" href="#">
+          <div class="member-avatar amber">1K</div>
+          <div><div class="member-card-name">1000 Hours Outside</div><div class="member-card-meta">Publisher · United States</div></div>
+          <span class="founding-badge">#02</span>
+        </a>
+        <a class="member-card-small" href="#">
+          <div class="member-avatar blue">KM</div>
+          <div><div class="member-card-name">Katherine Martinko</div><div class="member-card-meta">Author · Canada</div></div>
+          <span class="founding-badge">#04</span>
+        </a>
+        <a class="member-card-small" href="/unplugged-childhood/the-barefoot-family.html">
+          <div class="member-avatar circle">BF</div>
+          <div><div class="member-card-name">The Barefoot Family</div><div class="member-card-meta">Creator · Vermont, US</div></div>
+          <span class="founding-badge">#14</span>
+        </a>
+        <div class="more-members"><a href="/unplugged-childhood/" style="color:var(--green);font-weight:600">View all 100 members →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mission-bg" id="mission">
+    <div class="wrap">
+      <div class="section-header">
+        <h2>What we<br><em>celebrate.</em></h2>
+        <p class="section-desc">Thousands of publishers, educators, creators, and authors are doing extraordinary work — helping children explore, create, move, read, play, and connect. Unplugged Childhood exists to find them, recognize them, and make it easy for families to discover them.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <h3>Find the people doing the work</h3>
+          <p>We spent a year researching over 1,500 publishers, authors, educators, and creators who are actively promoting active, curious, and engaged childhoods. This is the network that emerged.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <h3>Give them the recognition they deserve</h3>
+          <p>A Founding Member profile is a public celebration — a statement that this publisher, creator, or author has done something genuinely valuable for children and the families raising them.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <h3>Help families find what's good</h3>
+          <p>Parents shouldn't have to dig. Every member profile is written to help families understand who this person is, what they stand for, and where to find their best work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="members">
+    <div class="wrap">
+      <div class="section-header">
+        <h2>Founding<br><em>Members</em></h2>
+        <p class="section-desc">One hundred publishers, creators, authors, and podcasts — chosen because their work genuinely matters to children and the families raising them. Each has a profile, a badge, and a permanent place in the network.</p>
+      </div>
+      <div class="members-grid">
+
+        <article class="member-card">
+          <div class="member-card-top">
+            <div class="member-logo">CMP</div>
+            <div class="member-number">01</div>
+          </div>
+          <div class="member-card-body">
+            <h3>Cool Mom Picks</h3>
+            <p>Twenty years of family lifestyle publishing with genuine editorial voice. Trusted recommendations for play, activities, travel, and the things that make family life richer.</p>
+            <div class="member-tags"><span class="tag">Family lifestyle</span><span class="tag">United States</span></div>
+            <a class="btn primary" href="/unplugged-childhood/cool-mom-picks.html">View profile →</a>
+          </div>
+        </article>
+
+        <article class="member-card">
+          <div class="member-card-top amber-bg">
+            <div class="member-logo amber">1K</div>
+            <div class="member-number">02</div>
+          </div>
+          <div class="member-card-body">
+            <h3>1000 Hours Outside</h3>
+            <p>The challenge that became a movement. Hundreds of thousands of families now actively track the time their children spend exploring outdoors — and changing what childhood looks like in the process.</p>
+            <div class="member-tags"><span class="tag">Outdoor play</span><span class="tag">United States</span></div>
+            <a class="btn" href="#">View profile →</a>
+          </div>
+        </article>
+
+        <article class="member-card">
+          <div class="member-card-top warm-bg">
+            <div class="member-logo ink">FP</div>
+            <div class="member-number">03</div>
+          </div>
+          <div class="member-card-body">
+            <h3>Fairplay</h3>
+            <p>The advocacy organization protecting the commercial integrity of childhood. Research-driven and fearless — the reason real policy conversations are happening at all.</p>
+            <div class="member-tags"><span class="tag">Advocacy</span><span class="tag">United States</span></div>
+            <a class="btn" href="#">View profile →</a>
+          </div>
+        </article>
+
+      </div>
+      <div style="text-align:center;margin-top:32px">
+        <a class="btn primary" href="/unplugged-childhood/">View all 100 Founding Members →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="reports">
+    <div class="wrap">
+      <div class="section-header">
+        <h2>Reports &<br><em>Research</em></h2>
+        <p class="section-desc">Every year, Unplugged Childhood publishes research on the state of active, engaged childhood — who is doing the most important work, what families are looking for, and where the most exciting things are happening.</p>
+      </div>
+      <div class="reports-layout">
+        <div class="report-main">
+          <div>
+            <div class="report-eyebrow">Launch Report · 2026</div>
+            <h3>State of Unplugged Childhood 2026</h3>
+            <p>Drawn from 1,500+ publisher and resource records — the most comprehensive picture of the active childhood ecosystem ever assembled. Who's doing the work, what families are finding, and where the most exciting energy is.</p>
+          </div>
+          <a class="btn white" href="#" style="align-self:flex-start;margin-top:28px">Preview report</a>
+        </div>
+        <div class="report-side">
+          <div class="report-small">
+            <h3>The Unplugged 100</h3>
+            <p>One hundred publishers, creators, and organizations doing the most to shape active, curious childhood experiences in 2026. The list families and the press reach for first.</p>
+          </div>
+          <div class="report-small">
+            <h3>Where Kids Are Thriving</h3>
+            <p>A regional look at the communities, programs, and publishers leading the way — and the places where families are finding the most support for an active childhood.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap" id="join">
+    <div class="cta-section">
+      <div>
+        <h2>Know someone who belongs here?</h2>
+        <p>Nominate a publisher, creator, author, nonprofit, museum, library, or podcast doing genuinely good work for children and families. We review every nomination personally. Founding Member slots are limited to 100.</p>
+      </div>
+      <a class="btn white" href="#">Nominate Someone</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026 Unplugged Childhood</span>
+    <span>thinkmystery.com/unplugged-childhood</span>
+  </div>
+</footer>
+
+</body>
+</html>

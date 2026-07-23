@@ -1,0 +1,76 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+
+const guides = [
+  { slug: 'scavenger-hunt-difficulty-by-age', title: "The Age-by-Age Guide to Kids' Scavenger Hunt Difficulty", desc: "What clue difficulty actually fits ages 4-10 — reading level, attention span, and hunt format that works.", emoji: '🧩' },
+  { slug: 'birthday-party-no-planned-games-mistake', title: "How to Run a Birthday Party With Zero Planned Games (And Why That's a Mistake)", desc: "Why 'kids will just play' fails after 20 minutes, and a low-effort structure that prevents chaos.", emoji: '🎉' },
+  { slug: 'indoor-vs-outdoor-party-games-small-homes-apartments', title: "Indoor vs. Outdoor Party Games: A Decision Framework for Small Homes and Apartments", desc: "No yard? A room-by-room space guide and a weather backup plan that actually works.", emoji: '🏠' },
+  { slug: 'screen-free-birthday-party-planning-guide', title: "The Screen-Free Birthday Party: A Complete Planning Guide", desc: "A timeslot-by-timeslot plan for a party where nobody needs a screen.", emoji: '📵' },
+  { slug: 'kids-attention-span-party-planning-research', title: "Why Kids' Attention Spans at Parties Are Shorter Than You Think", desc: "Real research on attention span by age, and why parties shrink it further.", emoji: '⏱️' },
+  { slug: 'printable-party-games-buy-vs-diy-guide', title: "The Parent's Guide to Printable Party Games: What to Buy vs. What to DIY", desc: "An honest framework for when to buy a tested hunt and when to write your own.", emoji: '✍️' },
+  { slug: 'rainy-day-activities-that-actually-tire-kids-out', title: "Rainy Day Activities That Actually Tire Kids Out", desc: "Real indoor activities that burn energy — not just quiet time.", emoji: '🌧️' },
+  { slug: 'theme-kids-party-on-a-budget', title: "How to Theme a Kids' Party on a Budget", desc: "Where to spend, where to skip, and real budget breakdowns by theme.", emoji: '🎈' },
+]
+---
+
+<SiteLayout
+  seo_title="Parent Guides — ThinkMystery"
+  meta_description="Practical, research-backed guides for planning kids' birthday parties: difficulty calibration, budgets, screen-free planning, and more."
+  canonical_url="https://dummynotthink.vercel.app/guides/"
+  is_staging={false}
+  silo="scavenger"
+>
+  <main>
+    <section class="hero-simple">
+      <p class="eyebrow">Parent Guides</p>
+      <h1>Practical guides for planning kids' parties</h1>
+      <p class="lede">
+        Research-backed, no-fluff guides on the stuff that actually makes or breaks a kids' party —
+        difficulty calibration, budgets, screens, small spaces, and more.
+      </p>
+    </section>
+
+    <section class="related-grid guides-grid">
+      {guides.map(g => (
+        <a href={`/guides/${g.slug}/`}>
+          <span class="related-emoji">{g.emoji}</span>
+          <strong>{g.title}</strong>
+          <span>{g.desc}</span>
+        </a>
+      ))}
+    </section>
+  </main>
+</SiteLayout>
+
+<style>
+  .hero-simple {
+    padding: 48px 0 20px;
+  }
+  .hero-simple h1 {
+    max-width: 780px;
+  }
+  .lede {
+    font-size: 1.15rem;
+    max-width: 620px;
+    margin-top: 18px;
+  }
+  .guides-grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 30px 0 60px;
+  }
+  .guides-grid a {
+    padding: 26px;
+  }
+  .guides-grid strong {
+    display: block;
+    font-size: 1.15rem;
+    line-height: 1.35;
+    margin: 4px 0 8px;
+    color: var(--text-primary);
+  }
+  @media (max-width: 700px) {
+    .guides-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

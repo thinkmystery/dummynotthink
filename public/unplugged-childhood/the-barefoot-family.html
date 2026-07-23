@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Barefoot Family — Unplugged Childhood</title>
+  <meta name="description" content="The Barefoot Family founding member profile for Unplugged Childhood, a ThinkMystery initiative." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#1a1209;--ink2:#3d2f1a;--muted:#8a7560;--paper:#faf7f2;--cream:#f2ece0;
+      --warm:#e8dece;--green:#2d5a3d;--green-light:#e8f0ea;--amber:#c8762a;
+      --amber-light:#fdf0e0;--line:rgba(26,18,9,.1);--line-strong:rgba(26,18,9,.18);
+      --shadow:0 8px 32px rgba(26,18,9,.1);--shadow-lg:0 24px 72px rgba(26,18,9,.14);
+      /* Social-first accent */
+      --insta:#c13584;--tiktok:#010101;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);font-size:17px;line-height:1.6}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.4}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1160px,92vw);margin:0 auto}
+
+    header{position:sticky;top:0;z-index:100;background:rgba(250,247,242,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+    .nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand-mark{width:38px;height:38px;border-radius:10px;background:var(--green);display:flex;align-items:center;justify-content:center}
+    .brand-mark svg{width:20px;height:20px}
+    .brand-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+    .brand-name span{display:block;font-size:.72rem;font-family:'DM Sans',sans-serif;font-weight:500;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:6px;padding:10px 20px;font-weight:600;font-size:.9rem;border:1.5px solid var(--line-strong);background:transparent;cursor:pointer;transition:all .2s;color:var(--ink)}
+    .btn:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+    .btn.primary{background:var(--green);color:white;border-color:var(--green)}
+    .btn.primary:hover{background:#224530;border-color:#224530}
+    .btn.amber{background:var(--amber);color:white;border-color:var(--amber)}
+    .btn.amber:hover{background:#a85e1e;border-color:#a85e1e}
+    .btn.insta{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;border-color:transparent}
+
+    .breadcrumb{padding:20px 0;font-size:.85rem;color:var(--muted);display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line)}
+    .breadcrumb a{color:var(--green);font-weight:500}
+    .breadcrumb a:hover{text-decoration:underline}
+
+    /* ENTITY BADGES */
+    .entity-type-row{display:flex;align-items:center;gap:10px;margin-bottom:22px;flex-wrap:wrap}
+    .entity-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:5px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid}
+    .entity-badge.creator{background:#fce4f0;color:#a0186e;border-color:rgba(160,24,110,.2)}
+    .entity-badge.founding{background:var(--ink);color:white;border-color:var(--ink)}
+    .entity-badge.no-website{background:#f0f0f0;color:#666;border-color:#ddd}
+
+    /* PROFILE HERO */
+    .profile-hero{padding:48px 0 0}
+    .profile-hero-grid{display:grid;grid-template-columns:1fr 340px;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:white}
+    .profile-hero-main{padding:44px;border-right:1px solid var(--line)}
+
+    /* Avatar — circular for social creators vs square for publishers */
+    .profile-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#f09433,#cc2366);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:white;margin-bottom:22px;box-shadow:0 8px 24px rgba(204,35,102,.25)}
+
+    h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,4rem);line-height:.96;letter-spacing:-.03em;font-weight:900;margin-bottom:6px}
+    .handle{font-size:1rem;color:var(--muted);font-weight:500;margin-bottom:16px}
+    .handle a{color:var(--insta);font-weight:600}
+    .handle a:hover{text-decoration:underline}
+    .profile-lead{font-size:1.1rem;line-height:1.6;color:var(--ink2);font-weight:300;max-width:560px;margin-bottom:28px}
+    .profile-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+
+    /* SOCIAL LINKS — prominent for social-first entities */
+    .social-links{display:flex;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--line)}
+    .social-link{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:6px;font-size:.85rem;font-weight:700;transition:all .18s;border:1.5px solid transparent}
+    .social-link.insta{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white}
+    .social-link.insta:hover{opacity:.85}
+    .social-link.tiktok{background:#010101;color:white}
+    .social-link.tiktok:hover{background:#222}
+    .social-link svg{width:15px;height:15px;flex-shrink:0}
+
+    /* NO WEBSITE NOTICE */
+    .no-website-notice{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--cream);border-radius:8px;border:1px solid var(--line);font-size:.84rem;color:var(--muted);margin-top:16px}
+    .no-website-notice svg{width:16px;height:16px;flex-shrink:0;color:var(--amber)}
+
+    .profile-hero-side{padding:44px 32px;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;gap:24px}
+    .founding-seal{border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:22px;text-align:center}
+    .seal-label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px}
+    .seal-number{font-family:'Playfair Display',serif;font-size:3.6rem;font-weight:900;line-height:1;color:var(--amber);margin-bottom:6px}
+    .seal-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;line-height:1.2}
+    .meta-list{display:flex;flex-direction:column;gap:0}
+    .meta-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:.86rem}
+    .meta-item:last-child{border-bottom:none;padding-bottom:0}
+    .meta-key{color:rgba(255,255,255,.45);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:.73rem}
+    .meta-val{font-weight:600}
+
+    /* REACH BAR — follower-focused metrics for social creators */
+    .facts-bar{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-top:none;border-radius:0 0 16px 16px;overflow:hidden;background:var(--cream);margin-bottom:48px}
+    .fact{padding:20px 22px;border-right:1px solid var(--line)}
+    .fact:last-child{border-right:none}
+    .fact-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:7px}
+    .fact-value{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;letter-spacing:-.02em}
+    .fact-value.highlight{color:var(--insta)}
+
+    /* CONTENT */
+    .content-layout{display:grid;grid-template-columns:1fr 320px;gap:22px;margin-bottom:80px;align-items:start}
+    .content-main{display:flex;flex-direction:column;gap:22px}
+    .panel{background:white;border:1px solid var(--line);border-radius:12px;padding:34px}
+    h2{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;letter-spacing:-.025em;margin-bottom:14px;line-height:1.1}
+    h2 em{font-style:italic;color:var(--green)}
+    h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:8px}
+    p{color:var(--ink2);line-height:1.65;font-weight:300;margin-bottom:12px}
+    p:last-child{margin-bottom:0}
+    .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+    .tag{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:5px 10px;border-radius:5px;background:var(--cream);color:var(--ink2);border:1px solid var(--line)}
+    .tag.green{background:var(--green-light);color:var(--green);border-color:rgba(45,90,61,.15)}
+    .tag.insta{background:#fce4f0;color:#a0186e;border-color:rgba(160,24,110,.15)}
+
+    /* CONTENT SAMPLES — replaces resources for social-only entities */
+    .content-sample{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+    .content-sample:last-child{border-bottom:none;padding-bottom:0}
+    .sample-platform{width:36px;height:36px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+    .sample-platform.ig{background:linear-gradient(135deg,#f09433,#cc2366)}
+    .sample-platform.tt{background:#010101}
+    .sample-platform svg{width:16px;height:16px;color:white}
+    .sample-title{font-weight:600;font-size:.94rem;margin-bottom:4px;color:var(--ink)}
+    .sample-meta{font-size:.78rem;color:var(--muted);font-weight:500}
+
+    .related-entity{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+    .related-entity:last-child{border-bottom:none;padding-bottom:0}
+    .related-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:.85rem;font-weight:700;color:white;flex-shrink:0}
+    .related-name{font-weight:600;font-size:.92rem;margin-bottom:2px}
+    .related-type{font-size:.76rem;color:var(--muted)}
+    .related-arrow{margin-left:auto;color:var(--muted);font-size:1rem}
+
+    .quote-panel{background:linear-gradient(135deg,#f09433,#cc2366);color:white;border-radius:12px;padding:34px}
+    .quote-mark{font-family:'Playfair Display',serif;font-size:3.6rem;line-height:.6;color:rgba(255,255,255,.2);margin-bottom:14px;display:block}
+    .quote-text{font-family:'Playfair Display',serif;font-size:1.2rem;line-height:1.5;font-style:italic;color:rgba(255,255,255,.95);margin-bottom:14px}
+    .quote-attr{font-size:.8rem;color:rgba(255,255,255,.55);font-weight:600}
+
+    .content-side{display:flex;flex-direction:column;gap:18px}
+    .side-panel{background:white;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+    .side-panel-head{padding:16px 20px;border-bottom:1px solid var(--line);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .side-panel-body{padding:20px}
+    .side-panel-body p{font-size:.88rem;margin-bottom:10px}
+
+    /* REACH PANEL — replaces badge/website panel for social-only */
+    .reach-panel{background:var(--ink);border-radius:12px;padding:26px}
+    .reach-panel-head{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:18px}
+    .reach-row{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+    .reach-row:last-child{border-bottom:none;padding-bottom:0}
+    .reach-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .reach-icon.ig{background:linear-gradient(135deg,#f09433,#cc2366)}
+    .reach-icon.tt{background:#1a1a1a;border:1px solid rgba(255,255,255,.1)}
+    .reach-icon svg{width:16px;height:16px;color:white}
+    .reach-info{flex:1}
+    .reach-platform{font-size:.78rem;color:rgba(255,255,255,.5);font-weight:600;margin-bottom:2px}
+    .reach-count{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:white;line-height:1}
+
+    .badge-display{background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:12px;padding:26px;text-align:center}
+    .badge-visual{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--amber),#cc2366);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}
+    .badge-visual-text{font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.8);line-height:1.3;text-align:center}
+    .badge-visual-main{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:900;color:white;line-height:1}
+    .badge-desc{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.5;font-weight:300;margin:12px 0 16px}
+    .code-block{background:rgba(0,0,0,.4);border-radius:8px;padding:12px;font-size:.7rem;font-family:'Courier New',monospace;color:rgba(255,255,255,.55);white-space:pre-wrap;word-break:break-all;text-align:left;line-height:1.5}
+
+    .claim-panel{background:linear-gradient(135deg,#fce4f0,#e8f0ea);border:1px solid var(--line);border-radius:12px;padding:26px;text-align:center}
+    .claim-panel h3{font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:8px}
+    .claim-panel p{font-size:.84rem;color:var(--muted);line-height:1.55;margin-bottom:16px}
+
+    footer{border-top:1px solid var(--line);padding:32px 0}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;font-size:.84rem;color:var(--muted)}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .fade-up{animation:fadeUp .6s ease both}
+    .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}
+
+    @media(max-width:900px){
+      .profile-hero-grid{grid-template-columns:1fr}
+      .facts-bar{grid-template-columns:1fr 1fr}
+      .content-layout{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/unplugged-childhood/">
+      <div class="brand-mark">
+        <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="white" stroke-width="1.5"/><path d="M4 17c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="brand-name">Unplugged Childhood</div>
+    </a>
+    <a class="btn" href="/unplugged-childhood/">← Back to hub</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <nav class="breadcrumb">
+      <a href="/unplugged-childhood/">Unplugged Childhood</a>
+      <span>›</span><a href="#">Members</a>
+      <span>›</span><span>The Barefoot Family</span>
+    </nav>
+
+    <section class="profile-hero">
+      <div class="profile-hero-grid fade-up">
+        <div class="profile-hero-main">
+
+          <div class="entity-type-row">
+            <span class="entity-badge creator">Creator</span>
+            <span class="entity-badge founding">Founding Member #14</span>
+          </div>
+
+          <!-- Circular avatar for social creators -->
+          <div class="profile-avatar">BF</div>
+
+          <h1>The Barefoot Family</h1>
+          <p class="handle">
+            <a href="https://instagram.com/thebarefootfamily" target="_blank" rel="noopener">@thebarefootfamily</a>
+            · Instagram &amp; TikTok
+          </p>
+          <p class="profile-lead">A family of five in rural Vermont documenting what an active, unhurried, fully engaged childhood actually looks like — outdoor play, homeschool rhythms, handmade toys, and a life lived at its own pace.</p>
+
+          <div class="profile-actions">
+            <a class="btn insta" href="https://instagram.com/thebarefootfamily" target="_blank" rel="noopener">
+              Follow on Instagram →
+            </a>
+            <a class="btn amber" href="#claim">Claim this profile</a>
+          </div>
+
+          <div class="social-links">
+            <a class="social-link insta" href="https://instagram.com/thebarefootfamily" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="4" stroke="white" stroke-width="1.5"/><circle cx="8" cy="8" r="3" stroke="white" stroke-width="1.5"/><circle cx="12" cy="4" r=".8" fill="white"/></svg>
+              Instagram · 184K
+            </a>
+            <a class="social-link tiktok" href="https://tiktok.com/@thebarefootfamily" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M10 2c.2 1.5 1 2.5 2.5 2.8v2c-.9 0-1.8-.3-2.5-.8V11a4 4 0 11-4-4v2a2 2 0 102 2V2h2z" fill="white"/></svg>
+              TikTok · 92K
+            </a>
+          </div>
+
+        </div>
+        <aside class="profile-hero-side">
+          <div class="founding-seal">
+            <div class="seal-label">Founding Member</div>
+            <div class="seal-number">#14</div>
+            <div class="seal-title">Unplugged Childhood</div>
+          </div>
+          <div class="meta-list">
+            <div class="meta-item"><span class="meta-key">Entity type</span><span class="meta-val">Creator · Family</span></div>
+            <div class="meta-item"><span class="meta-key">Active since</span><span class="meta-val">2021</span></div>
+            <div class="meta-item"><span class="meta-key">Location</span><span class="meta-val">Vermont, US</span></div>
+            <div class="meta-item"><span class="meta-key">Audience</span><span class="meta-val">Parents · Families</span></div>
+            <div class="meta-item"><span class="meta-key">Primary channel</span><span class="meta-val" style="color:#f09433">Instagram</span></div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- REACH BAR — follower-based metrics replace publishing metrics -->
+      <div class="facts-bar fade-up d1">
+        <div class="fact"><div class="fact-label">Instagram</div><div class="fact-value highlight">184K</div></div>
+        <div class="fact"><div class="fact-label">TikTok</div><div class="fact-value highlight">92K</div></div>
+        <div class="fact"><div class="fact-label">Combined reach</div><div class="fact-value">276K</div></div>
+        <div class="fact"><div class="fact-label">Active since</div><div class="fact-value">2021</div></div>
+      </div>
+    </section>
+
+    <div class="content-layout">
+      <div class="content-main">
+
+        <div class="panel fade-up d2">
+          <h2>Why <em>selected</em></h2>
+          <p>The Barefoot Family has built one of the most authentic and engaged family audiences on social media — not by advocating for anything, but simply by showing what an active, unhurried childhood looks like when a family commits to it fully.</p>
+          <p>Their content — outdoor mornings, handmade toys, unstructured afternoons in the woods — consistently generates the kind of warmth and engagement that polished parenting accounts rarely achieve. That authenticity is exactly what Unplugged Childhood exists to celebrate and amplify.</p>
+          <div class="tags">
+            <span class="tag green">Outdoor childhood</span>
+            <span class="tag green">Screen-free living</span>
+            <span class="tag green">Homeschool</span>
+            <span class="tag insta">184K Instagram</span>
+            <span class="tag">Rural family</span>
+            <span class="tag">Radical simplicity</span>
+          </div>
+        </div>
+
+        <!-- CONTENT SAMPLES replaces resources for social-only entities -->
+        <div class="panel fade-up d2">
+          <h2>Notable <em>content</em></h2>
+          <div class="content-sample">
+            <div class="sample-platform ig">
+              <svg viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="4" stroke="white" stroke-width="1.5"/><circle cx="8" cy="8" r="3" stroke="white" stroke-width="1.5"/></svg>
+            </div>
+            <div>
+              <div class="sample-title">A week without screens — what actually happened</div>
+              <div class="sample-meta">Instagram Reel · 2.1M views · March 2025</div>
+            </div>
+          </div>
+          <div class="content-sample">
+            <div class="sample-platform tt">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M10 2c.2 1.5 1 2.5 2.5 2.8v2c-.9 0-1.8-.3-2.5-.8V11a4 4 0 11-4-4v2a2 2 0 102 2V2h2z" fill="white"/></svg>
+            </div>
+            <div>
+              <div class="sample-title">What our mornings look like (no devices, ever)</div>
+              <div class="sample-meta">TikTok · 890K views · January 2025</div>
+            </div>
+          </div>
+          <div class="content-sample">
+            <div class="sample-platform ig">
+              <svg viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="4" stroke="white" stroke-width="1.5"/><circle cx="8" cy="8" r="3" stroke="white" stroke-width="1.5"/></svg>
+            </div>
+            <div>
+              <div class="sample-title">The toys we actually use (all 12 of them)</div>
+              <div class="sample-meta">Instagram carousel · 340K impressions · November 2024</div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="quote-panel fade-up d3">
+          <span class="quote-mark">"</span>
+          <p class="quote-text">We didn't set out to build a platform. We just stopped giving our kids screens and started showing what happened instead.</p>
+          <div class="quote-attr">The Barefoot Family — @thebarefootfamily</div>
+        </div>
+
+        <div class="panel fade-up d3">
+          <h2>In their <em>own words</em></h2>
+          <p style="color:var(--muted);font-style:italic">This profile is awaiting a message from The Barefoot Family. Founding Members are invited to contribute a short statement in their own voice — what they share, why they do it, and what they hope families take away.</p>
+        </div>
+
+      </div>
+
+      <aside class="content-side">
+
+        <!-- REACH PANEL replaces badge panel for social-first -->
+        <div class="reach-panel fade-up d2">
+          <div class="reach-panel-head">Audience reach</div>
+          <div class="reach-row">
+            <div class="reach-icon ig">
+              <svg viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="4" stroke="white" stroke-width="1.5"/><circle cx="8" cy="8" r="3" stroke="white" stroke-width="1.5"/></svg>
+            </div>
+            <div class="reach-info">
+              <div class="reach-platform">Instagram</div>
+              <div class="reach-count">184,000</div>
+            </div>
+          </div>
+          <div class="reach-row">
+            <div class="reach-icon tt">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M10 2c.2 1.5 1 2.5 2.5 2.8v2c-.9 0-1.8-.3-2.5-.8V11a4 4 0 11-4-4v2a2 2 0 102 2V2h2z" fill="white"/></svg>
+            </div>
+            <div class="reach-info">
+              <div class="reach-platform">TikTok</div>
+              <div class="reach-count">92,000</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Badge still present — social creators can embed in bio link or Linktree -->
+        <div class="badge-display fade-up d2">
+          <div class="badge-visual">
+            <div class="badge-visual-text">Founding<br>Member</div>
+            <div class="badge-visual-main">UC</div>
+          </div>
+          <p class="badge-desc">Share your Founding Member badge in your bio link, Linktree, or story highlights.</p>
+          <div class="code-block">https://thinkmystery.com/badges/uc-founding-member.png
+
+Profile link:
+thinkmystery.com/unplugged-childhood/members/the-barefoot-family</div>
+        </div>
+
+        <div class="side-panel fade-up d3">
+          <div class="side-panel-head">What they cover</div>
+          <div class="side-panel-body">
+            <p>Outdoor childhood, homeschool rhythms, seasonal play, handmade toys, slow family living, and the everyday texture of a life chosen deliberately — and documented honestly.</p>
+          </div>
+        </div>
+
+        <div id="claim" class="claim-panel fade-up d3">
+          <h3>Is this your account?</h3>
+          <p>Add your own words to this profile and receive your Founding Member badge to share in your bio, stories, and Linktree.</p>
+          <a class="btn primary" href="#" style="width:100%;justify-content:center">Claim this profile</a>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026 Unplugged Childhood</span>
+    <a href="/unplugged-childhood/" style="color:var(--green);font-weight:600">← Back to hub</a>
+  </div>
+</footer>
+
+</body>
+</html>
